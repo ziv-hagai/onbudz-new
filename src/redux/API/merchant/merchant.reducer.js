@@ -105,6 +105,8 @@ const MerchantReducer = (state = INITIAL_STATE, action = {}) => {
       };
 
     default:
+      console.log('g');
+
       return state;
   }
 };

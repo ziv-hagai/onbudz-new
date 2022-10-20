@@ -625,8 +625,7 @@
   font-size: 13px;
 }
 
-.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused
-  .MuiOutlinedInput-notchedOutline {
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
   border-color: var(--primary) !important;
 }
 
@@ -657,7 +656,7 @@
   height: 15px;
   width: 15px;
   border-radius: 50%;
-  background: #ff2222;
+  background: var(--primary);
   display: flex;
   position: absolute;
   align-items: center;
@@ -689,6 +688,10 @@
 
 .notificationList .chatMainBox__info {
   text-align: left;
+}
+
+.MuiTabs-indicator {
+  background-color: var(--primary) !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -725,6 +728,6 @@
   min-width: 50px !important;
 }
 
-.userBlock-img > img {
+.userBlock-img>img {
   width: 100%;
 }

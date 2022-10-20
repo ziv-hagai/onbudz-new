@@ -68,7 +68,7 @@ export default function Dashboard() {
   );
 
   const x = useSelector((state) => state);
-  console.log(x);
+  // console.log(x);
 
   const user = useSelector((state) => state.user.user);
 
@@ -161,7 +161,7 @@ export default function Dashboard() {
         <div className="container">
           <div className="block-slider">
             <div className="module-heading">
-              <OtherCategories slider={true} categories={otherCategoriesArr} />
+              {/* <OtherCategories slider={true} categories={otherCategoriesArr} /> */}
 
               <div className="featured-product">
                 <div className="module-heading">

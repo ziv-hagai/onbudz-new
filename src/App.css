@@ -1,13 +1,17 @@
 html {
-  --gray: #bdc4d1;
-  --lightgray: #e1e4ea;
-  --primary: #00c4f8 !important;
-  /* --lightblue: #17A2B8;
-  --blue: #1976d2;
-  --blue3: #007bff;
-    --secondary: #1AABE3;
-    --blue2: #00a9d6;
-    --dark: #00374d; */
+  --lightblue: #17A2B8;
+  --gray: #BDC4D1;
+  --lightgray: #E1E4EA;
+  --lightblue: #17A2B8;
+  --gray: #BDC4D1;
+  --lightgray: #E1E4EA;
+  --secondary: #4caf50 !important;
+  /*13 --green*/
+  --primary: #6fbf73 !important;
+  /*47*/
+  --dark: #357a38;
+  /*2*/
+  --a: #4cfa55;
 }
 
 body {
@@ -275,11 +279,7 @@ iframe {
   margin-right: 0px;
 }
 
-[dir="rtl"]
-  .MuiPopover-root
-  .MuiPopover-paper
-  .MuiListItem-gutters.MuiListItem-button
-  img {
+[dir="rtl"] .MuiPopover-root .MuiPopover-paper .MuiListItem-gutters.MuiListItem-button img {
   margin-right: 0;
   margin-left: 8px;
 }
