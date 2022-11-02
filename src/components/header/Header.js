@@ -91,14 +91,14 @@ const Header = () => {
 
   useEffect(() => {
     const filteredP = products.filter((product) =>
-      product.title.includes(searchText)
+      product.title.toLowerCase().includes(searchText.toLowerCase())
     );
     filteredP === products
       ? setFilterProducts([])
       : setFilterProducts(filteredP);
 
     const filteredS = stores.filter((store) =>
-      store.title.includes(searchText)
+      store.title.toLowerCase().includes(searchText.toLowerCase())
     );
 
     filteredS === stores ? setFilterStores([]) : setFilterStores(filteredS);
