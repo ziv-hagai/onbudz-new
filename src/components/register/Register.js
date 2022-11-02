@@ -126,7 +126,7 @@ export default function Register() {
                 margin="dense"
                 {...register("firstName")}
                 error={!!errors.firstName}
-                // style={Styles.inputStyle}
+              // style={Styles.inputStyle}
               />
 
               <TextField
@@ -139,7 +139,7 @@ export default function Register() {
                 margin="dense"
                 {...register("lastName")}
                 error={!!errors.lastName}
-                // style={Styles.inputStyle}
+              // style={Styles.inputStyle}
               />
             </div>
 
@@ -158,7 +158,7 @@ export default function Register() {
                 InputProps={{
                   inputComponent: PhoneNumberField,
                 }}
-                // style={Styles.inputStyle}
+              // style={Styles.inputStyle}
               />
 
               <Select
@@ -189,7 +189,7 @@ export default function Register() {
                 margin="dense"
                 {...register("email")}
                 error={!!errors.email}
-                // style={Styles.inputStyle}
+              // style={Styles.inputStyle}
               />
             </div>
 
@@ -205,7 +205,7 @@ export default function Register() {
                 margin="dense"
                 {...register("password")}
                 error={!!errors.password}
-                // style={Styles.inputStyle}
+              // style={Styles.inputStyle}
               />
 
               <TextField
@@ -219,7 +219,7 @@ export default function Register() {
                 {...register("cPassword")}
                 type="password"
                 error={!!errors.cPassword}
-                // style={Styles.inputStyle}
+              // style={Styles.inputStyle}
               />
             </div>
 
@@ -236,7 +236,9 @@ export default function Register() {
 
             <div className="CheckLinkBlock">
               <FormControlLabel
-                control={<Checkbox />}
+                control={<Checkbox
+                  sx={{ color: 'green !important' }}
+                />}
                 checked={isagree}
                 onChange={(e) => setIsagree(e.target.checked)}
                 label={t("iagree")}
@@ -266,7 +268,7 @@ export default function Register() {
         </Card>
         <Card style={{ marginTop: 20, boxShadow: "none" }}>
           <CardContent className="bottomLinks">
-            {t("alreadyaccount")} <Link to="/login">{t("log in")}</Link>
+            {t("alreadyaccount")} <Link className="link" to="/login">{t("log in")}</Link>
           </CardContent>
         </Card>
       </div>

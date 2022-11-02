@@ -83,7 +83,7 @@ const App = () => {
               margin="dense"
               {...register("email")}
               error={!!errors.email}
-              // style={Styles.inputStyle}
+            // style={Styles.inputStyle}
             />
             <TextField
               required
@@ -98,12 +98,20 @@ const App = () => {
               error={!!errors.password}
             />
             <div className="CheckLinkBlock">
-              <FormControlLabel
+              {/* <FormControlLabel
                 control={<Checkbox defaultChecked />}
+                label={t("rememberMe")}
+              /> */}
+              <FormControlLabel
+                control={<Checkbox
+                  defaultChecked
+                  sx={{ color: 'green !important' }}
+                />
+                }
                 label={t("rememberMe")}
               />
               <Button className="forgotLink">
-                <Link to="/forgotPassword">{t("forgotPassword")}</Link>
+                <Link className="link" to="/forgotPassword">{t("forgotPassword")}</Link>
               </Button>
             </div>
             <div className="formBtn">
@@ -123,7 +131,7 @@ const App = () => {
         </Card>
         <Card style={{ marginTop: 20, boxShadow: "none" }}>
           <CardContent className="bottomLinks">
-            {t("registerMessage")} <Link to="/register">{t("register")}</Link>
+            {t("registerMessage")} <Link className="link" to="/register">{t("register")}</Link>
           </CardContent>
         </Card>
       </div>

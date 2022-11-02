@@ -246,12 +246,16 @@ export default function RegisterBusiness() {
 
               <div className="CheckLinkBlock">
                 <FormControlLabel
-                  control={<Checkbox defaultChecked />}
+                  control={<Checkbox
+                    defaultChecked
+                    sx={{ color: 'green !important' }}
+                  />
+                  }
                   label=""
                 />
                 <p>
-                  {t("iAgreeToSiteRules")} <a href="/"> {t("cookies")}</a>{" "}
-                  {t("and")} <a href="/"> {t("privacyPolicy")}</a>
+                  {t("iAgreeToSiteRules")} <a className="link" href="/"> {t("cookies")}</a>{" "}
+                  {t("and")} <a className="link" href="/"> {t("privacyPolicy")}</a>
                 </p>
               </div>
 
