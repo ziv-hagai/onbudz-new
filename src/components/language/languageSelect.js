@@ -31,7 +31,10 @@ const LanguageSelect = () => {
 
   return (
     <div className="d-flex justify-content-end align-items-center language-select-root">
-      <Button onClick={({ currentTarget }) => setMenuAnchor(currentTarget)}>
+      <Button
+        sx={{ color: 'green !important' }}
+        onClick={({ currentTarget }) => setMenuAnchor(currentTarget)}
+      >
         {selected === "en-US"
           ? languageMap["en"]?.label
           : languageMap[selected]?.label}
@@ -57,6 +60,8 @@ const LanguageSelect = () => {
             </ListSubheader>
             {Object.keys(languageMap)?.map((item) => (
               <ListItem
+                sx={{ color: 'green !important' }}
+
                 button
                 key={item}
                 onClick={() => {

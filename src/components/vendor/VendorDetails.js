@@ -148,7 +148,7 @@ export default function VendorsDetails() {
       );
     }
   };
-
+  // console.log(merchant);
   return (
     <>
       <Header />
