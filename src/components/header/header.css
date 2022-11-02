@@ -708,6 +708,10 @@
   text-align: left;
 }
 
+.MuiTabs-indicator {
+  background-color: var(--primary) !important;
+}
+
 @media only screen and (max-width: 600px) {
   .mainheader__btn {
     height: 30px;
