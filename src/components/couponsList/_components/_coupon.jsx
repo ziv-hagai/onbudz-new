@@ -1,9 +1,9 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-import couponCover from '../../../assets/images/couponCover.jpg'
+import couponCover from '../../../assets/images/art.png'
 
-const Coupon = ({ title, discountType, discountValue, subTitle, image, backgroundColor = '#0d47a1', style}) => {
+const Coupon = ({ title, discountType, discountValue, subTitle, image, backgroundColor = '#0d47a1', style }) => {
     const isTypePercent = discountType === 'percent' ? '%' : discountType
     const { t } = useTranslation()
 

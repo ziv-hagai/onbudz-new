@@ -227,6 +227,8 @@ export default function Dashboard() {
         <Header />
 
         <div className="container">
+          <CouponsList />
+
           <div className="block-slider">
             <div className="module-heading">
               {/* <OtherCategories slider={true} categories={otherCategoriesArr} /> */}
@@ -251,7 +253,7 @@ export default function Dashboard() {
                 </div>
               </div>
 
-              <div
+              {/* <div
                 className="balanceBox"
                 style={{
                   backgroundImage: "url(" + Art + ")",
@@ -264,9 +266,9 @@ export default function Dashboard() {
                     {user?.credit?.toFixed(1) || 0} {t("e-credit")}
                   </h6>
                 </div>
-              </div>
+              </div> */}
 
-              <CouponsList />
+              {/* <CouponsList /> */}
 
               {/* <div className="row align-items-center">
                 <div className="col-7">
