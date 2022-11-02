@@ -35,6 +35,8 @@ import profile from "../../assets/icons/profile.svg";
 import "./header.css";
 // import search from "../../assets/images/search.png";
 import Logo from "../../assets/images/logo.png";
+import leon from "../../assets/images/leon.jpg";
+import miracles from "../../assets/images/miracles.jpg";
 
 const Header = () => {
   const { t } = useTranslation();
@@ -44,6 +46,8 @@ const Header = () => {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [category, setCategory] = useState("");
   const [priceValue, setPriceValue] = useState([20, 37]);
+  const [thcValue, setThcValue] = useState([20, 37]);
+  const [tbdValue, setTbdValue] = useState([20, 37]);
   const [isSizeSelected, sizeSelected] = useState(false); // eslint-disable-line
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isSearchOpen, setSearchOpen] = useState(false);
@@ -127,6 +131,14 @@ const Header = () => {
     }
   };
 
+  const handleThcChange = (event, newValue) => {
+    setThcValue(newValue);
+  };
+
+  const handleTbdChange = (event, newValue) => {
+    setTbdValue(newValue);
+  };
+
   const closeMobileMenu = () => setClick(false);
 
   const handleCategoryChange = (event) => {
@@ -153,6 +165,19 @@ const Header = () => {
     { label: "Dress (831)", value: "dress" },
     { label: "Kurti", value: "kurti" },
     { label: "Sari", value: "sari" },
+  ];
+
+  const addVandorsData = [
+    {
+      image: leon,
+      name: t("Leon"),
+      phone: '0523456789',
+    },
+    {
+      image: miracles,
+      name: t("Miracles"),
+      phone: '0509876543',
+    },
   ];
 
   const sizeList = [
@@ -452,7 +477,7 @@ const Header = () => {
                     </div>
                     <div className="filterBlock">
                       <h6 className="filterBlockTitle">{t("priceRange")}</h6>
-                      <span>{priceValue}</span>
+                      <span>{priceValue[0]} - {priceValue[1]}</span>
                       <Slider
                         getAriaLabel={() => "Temperature range"}
                         value={priceValue}
@@ -462,21 +487,43 @@ const Header = () => {
                       />
                     </div>
                     <div className="filterBlock">
-                      <h6 className="filterBlockTitle">{t("size")}</h6>
+                      <h6 className="filterBlockTitle">{t("% THC")}</h6>
+                      <span>{thcValue[0]} - {thcValue[1]}</span>
+                      <Slider
+                        getAriaLabel={() => "percentage"}
+                        value={thcValue}
+                        onChange={handleThcChange}
+                        valueLabelDisplay="auto"
+                        getAriaValueText={valuetext}
+                      />
+                    </div>
+                    <div className="filterBlock">
+                      <h6 className="filterBlockTitle">{t("% TBD")}</h6>
+                      <span>{tbdValue[0]} - {tbdValue[1]}</span>
+                      <Slider
+                        getAriaLabel={() => "percentage"}
+                        value={tbdValue}
+                        onChange={handleTbdChange}
+                        valueLabelDisplay="auto"
+                        getAriaValueText={valuetext}
+                      />
+                    </div>
+                    <div className="filterBlock">
+                      <h6 className="filterBlockTitle">{t("Vendor")}</h6>
                       <div className="filterBlockRow">
-                        {sizeList.map((item, i) => {
+                        {addVandorsData.map((item, i) => {
                           return (
                             <span
                               className={isSizeSelected ? "active" : ""}
                               onClick={() => handleSizeChange(item, i)}
                             >
-                              {t(item.value)}
+                              {t(item.name)}
                             </span>
                           );
                         })}
                       </div>
                     </div>
-                    <div className="filterBlock">
+                    {/* <div className="filterBlock">
                       <h6 className="filterBlockTitle">{t("color")}</h6>
                       <div className="colorCode">
                         {colorList.map((item, i) => {
@@ -490,7 +537,7 @@ const Header = () => {
                           );
                         })}
                       </div>
-                    </div>
+                    </div> */}
                     <div className="saveFilter">
                       <Button className="blueBtn">{t("apply")}</Button>
                     </div>
