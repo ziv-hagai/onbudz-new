@@ -465,7 +465,7 @@ div[data-arrow="right"] {
 
   .caseback-box,
   .featuredProduct-box {
-    width: 275px;
+    /* width: 275px; */
   }
 
   .caseback-center .styles-module_slider__o0fqa,
@@ -475,7 +475,7 @@ div[data-arrow="right"] {
 
   .caseback-box,
   .allCategory .featuredProduct-box {
-    width: 300px;
+    /* width: 300px; */
   }
 }
 
