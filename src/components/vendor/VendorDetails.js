@@ -181,6 +181,7 @@ export default function VendorsDetails() {
               </div>
             </div>
           </div>
+
           <div className="second-row">
 
             <div className="vendorContent">

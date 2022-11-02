@@ -26,9 +26,39 @@
   box-shadow: 0px 0px 19px 0px rgb(0 0 0 / 10%);
 }
 
+.second-row {
+  display: flex;
+}
+
 .vendorContent {
   margin: 20px 0 60px;
-  max-width: 450px;
+  /* max-width: 450px; */
+  width: 50%;
+
+}
+
+.left {
+  display: flex;
+  justify-content: end;
+}
+
+.contacts {
+  width: 150px;
+}
+
+.vendorbanner-phone {
+  display: flex;
+  align-items: center;
+  /* color: white; */
+}
+
+.vendorbanner-phone svg {
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+.vendorbanner-phone a {
+  color: var(--darkGreen)
 }
 
 .vendorContent-title {
