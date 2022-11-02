@@ -100,7 +100,7 @@ export default function AllVendor() {
       <div className="pageTemplate">
         <div className="container">
           <ScrollingCarousel>
-            <Tabs
+            {/* <Tabs
               value={selectedTab.id}
               // onChange={handleChangeTab}
               className="categoriesSliderTabs"
@@ -113,7 +113,7 @@ export default function AllVendor() {
                   {category.title}
                 </Tab>
               ))}
-            </Tabs>
+            </Tabs> */}
           </ScrollingCarousel>
           {selectedTab.id === "all" && (
             <div className="vendorAllListBlock">

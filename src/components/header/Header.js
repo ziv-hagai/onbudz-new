@@ -173,7 +173,7 @@ const Header = () => {
     { code: "#c6c6c6", value: "" },
   ];
 
-  const handleSizeChange = (item, i) => {};
+  const handleSizeChange = (item, i) => { };
 
   const handleLogout = () => {
     dispatch(logout(() => navigate("/")));
@@ -189,7 +189,7 @@ const Header = () => {
             <div className="col-lg-3 col-2">
               <div className="headerLeft">
                 <span className="userBlock-img">
-                  <img src={Logo} alt="img" className="img-fluid" />
+                  {/* <img src={Logo} alt="img" className="img-fluid" /> */}
                 </span>
                 {isMenuOpen ? (
                   <Drawer
@@ -227,7 +227,7 @@ const Header = () => {
                               </div>
                               <div
                                 className="menuHead-btn"
-                                // onClick={() => history.push("/")}
+                              // onClick={() => history.push("/")}
                               ></div>
                             </div>
                           )}
@@ -633,7 +633,7 @@ const Header = () => {
                 )}
                 {/* <LanguageSelect /> */}
                 <div className="lanSelector">
-                  <LanguageSelect />
+                  {/* <LanguageSelect /> */}
                 </div>
               </div>
             </div>

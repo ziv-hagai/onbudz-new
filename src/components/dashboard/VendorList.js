@@ -72,7 +72,7 @@ export default function VendorList(props) {
         </div>
       </div>
 
-      <Tabs
+      {/* <Tabs
         defaultSelectedIndex={0}
         className="categoriesSliderTabs"
         // onChange={handleChange}
@@ -86,34 +86,34 @@ export default function VendorList(props) {
               {category.title}
             </Tab>
           ))}
-      </Tabs>
+      </Tabs> */}
 
       <ScrollingCarousel>
         <ul className="categoryList">
           {merchants.length > 0
             ? merchants.map((item) => (
-                <>
-                  <li
-                    onClick={() => {
-                      navigate(`/vendor/${item.id}`, {
-                        state: { id: item.id },
-                      });
-                    }}
-                    className="categoryList__block isLink"
-                  >
-                    <div className="category-box text-center">
-                      <div className="category-box__img">
-                        <img
-                          src={item.image}
-                          className="img-fluid"
-                          alt="My Awesome"
-                        />
-                      </div>
-                      <h6 className="category-box__title">{item.title}</h6>
+              <>
+                <li
+                  onClick={() => {
+                    navigate(`/vendor/${item.id}`, {
+                      state: { id: item.id },
+                    });
+                  }}
+                  className="categoryList__block isLink"
+                >
+                  <div className="category-box text-center">
+                    <div className="category-box__img">
+                      <img
+                        src={item.image}
+                        className="img-fluid"
+                        alt="My Awesome"
+                      />
                     </div>
-                  </li>
-                </>
-              ))
+                    <h6 className="category-box__title">{item.title}</h6>
+                  </div>
+                </li>
+              </>
+            ))
             : t("No merchants")}
         </ul>
       </ScrollingCarousel>
