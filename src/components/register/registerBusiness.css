@@ -288,8 +288,7 @@
   right: 36px;
 }
 
-.ragiserForm
-  .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input::placeholder {
+.ragiserForm .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input::placeholder {
   text-align: right;
 }
 
@@ -323,4 +322,8 @@
   .formLabel {
     padding: 0 10px;
   }
+}
+
+.link {
+  color: green !important;
 }
