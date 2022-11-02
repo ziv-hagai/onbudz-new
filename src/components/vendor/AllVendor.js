@@ -58,40 +58,40 @@ export default function AllVendor() {
     return setMerchantsList(merchants);
   }, [merchantsPending]); //eslint-disable-line
 
-  const merchantCategoriesArr = [
-    {
-      title: t("ClothingAndFashionAccessories"),
-      id: 1,
-    },
-    {
-      title: t("footwear"),
-      id: 2,
-    },
-    {
-      title: t("HygieneCareAndBeauty"),
-      id: 3,
-    },
-    {
-      title: t("bookstoresAndSports"),
-      id: 4,
-    },
-    {
-      title: t("toysAndGames"),
-      id: 5,
-    },
-    {
-      title: t("foodAndCafes"),
-      id: 6,
-    },
-    {
-      title: t("housewares"),
-      id: 7,
-    },
-    {
-      title: t("electricalProductStores"),
-      id: 8,
-    },
-  ];
+  // const merchantCategoriesArr = [
+  //   {
+  //     title: t("ClothingAndFashionAccessories"),
+  //     id: 1,
+  //   },
+  //   {
+  //     title: t("footwear"),
+  //     id: 2,
+  //   },
+  //   {
+  //     title: t("HygieneCareAndBeauty"),
+  //     id: 3,
+  //   },
+  //   {
+  //     title: t("bookstoresAndSports"),
+  //     id: 4,
+  //   },
+  //   {
+  //     title: t("toysAndGames"),
+  //     id: 5,
+  //   },
+  //   {
+  //     title: t("foodAndCafes"),
+  //     id: 6,
+  //   },
+  //   {
+  //     title: t("housewares"),
+  //     id: 7,
+  //   },
+  //   {
+  //     title: t("electricalProductStores"),
+  //     id: 8,
+  //   },
+  // ];
 
   return (
     <div>
@@ -120,7 +120,7 @@ export default function AllVendor() {
               <h6 className="module-heading__title">{t("popularVendors")}</h6>
               <ul className="categoryList">
                 {merchants.length > 0 ? (
-                  merchants.map((item) => (
+                  merchants.slice(8).map((item) => (
                     <>
                       <li
                         className="categoryList__block isLink"
@@ -165,9 +165,18 @@ export default function AllVendor() {
               {merchantsList?.length > 0 ? (
                 merchantsList.map((item) => (
                   <>
-                    <li className="categoryList__block">
-                      <div className="category-box text-center">
+                    <li
+                      className="categoryList__block isLink"
+                      onClick={() => {
+                        navigate(`/vendor/${item.id}`, {
+                          state: { id: item.id },
+                        });
+                      }}
+                    >                      <div className="category-box text-center">
                         <span className="category-boxSubTitle">{item.km}</span>
+                        <span className="category-boxSubTitle">
+                          12 {t("km")}
+                        </span>
                         <div className="category-box__img">
                           <img
                             src={item.image}

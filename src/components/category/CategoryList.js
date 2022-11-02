@@ -6,7 +6,7 @@ import Header from "../header/Header";
 import OnlyCategoryList from "./OnlyCategoryList";
 import { getProductCategories } from "../../redux/API/productCategories/productCategories.action";
 
-import Ipad from "../../assets/images/ipad.jpg";
+import Ipad from "../../assets/images/art.png";
 
 function CategoryList() {
   const { t } = useTranslation();
