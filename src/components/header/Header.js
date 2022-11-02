@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
+import MicIcon from "@mui/icons-material/Mic";
 import PersonOutline from "@material-ui/icons/PersonOutline";
 import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
 import Clear from "@material-ui/icons/Clear";
@@ -25,7 +26,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import LanguageSelect from "../language/languageSelect";
 import { setGetTabbingValue, logout } from "../../redux/actions-exporter";
-
+import SearchResult from "../searchResult/SearchResult";
 import profile from "../../assets/icons/profile.svg";
 // import groupChat from "../../assets/icons/group-chat.svg";
 // import Vacant from "../../assets/icons/vacantLand.svg";
@@ -38,6 +39,8 @@ import Logo from "../../assets/images/logo.png";
 const Header = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [category, setCategory] = useState("");
   const [priceValue, setPriceValue] = useState([20, 37]);
@@ -46,12 +49,68 @@ const Header = () => {
   const [isSearchOpen, setSearchOpen] = useState(false);
   const [subToggleMenu, setSubToggleMenu] = useState(false);
   const [notification, setNotification] = useState(false);
-  const dispatch = useDispatch();
   const { tabbingValue } = useSelector((state) => state.tabbing);
   const [value, setValue] = useState(tabbingValue);
+  const [click, setClick] = useState(false); // eslint-disable-line
+
+  const [products, setProducts] = useState([]);
+  const [stores, setStores] = useState([]);
+  const [searchText, setSearchText] = useState([]);
+  const [filterProducts, setFilterProducts] = useState([]);
+  const [filterStores, setFilterStores] = useState([]);
+
+  const categories = useSelector(
+    (state) => state.productCategories.productCategories
+  );
+  const merchants = useSelector((state) => state.merchant.merchants);
+  // const x = useSelector((state) => state);
+  // categories && console.log(x);
+
+  //  search
+  useEffect(() => {
+    if (categories.length) {
+      const prepareProduct = categories.reduce(
+        (previous, current) => [
+          ...previous,
+          ...current.products.map((product) => ({
+            ...product,
+            categoryId: current.id,
+            categoryName: current.title,
+          })),
+        ],
+        []
+      );
+      setProducts(prepareProduct);
+      setStores(merchants);
+    }
+  }, [categories]); // eslint-disable-line
+
+  useEffect(() => {
+    const filteredP = products.filter((product) =>
+      product.title.includes(searchText)
+    );
+    filteredP === products
+      ? setFilterProducts([])
+      : setFilterProducts(filteredP);
+
+    const filteredS = stores.filter((store) =>
+      store.title.includes(searchText)
+    );
+
+    filteredS === stores ? setFilterStores([]) : setFilterStores(filteredS);
+    // console.log(filterStores);
+  }, [searchText]); // eslint-disable-line
+
+  const openSearch = () => {
+    document.querySelector(".menuSearch").style.display = "none"
+      ? "block"
+      : "none";
+  };
+  // end search
+
   const cartCount = useSelector((state) => state.cart.count);
   const user = useSelector((state) => state?.user?.user);
-  const [click, setClick] = useState(false); // eslint-disable-line
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
     if (newValue === 0) {
@@ -67,7 +126,9 @@ const Header = () => {
       navigate("/categorylist");
     }
   };
+
   const closeMobileMenu = () => setClick(false);
+
   const handleCategoryChange = (event) => {
     setCategory(event.target.value);
   };
@@ -111,12 +172,14 @@ const Header = () => {
     { code: "#e76d6d", value: "" },
     { code: "#c6c6c6", value: "" },
   ];
-  const handleSizeChange = (item, i) => { };
+
+  const handleSizeChange = (item, i) => {};
 
   const handleLogout = () => {
     dispatch(logout(() => navigate("/")));
     setMenuOpen(false);
   };
+  // product && console.log(product);
 
   return (
     <div className="main">
@@ -126,7 +189,7 @@ const Header = () => {
             <div className="col-lg-3 col-2">
               <div className="headerLeft">
                 <span className="userBlock-img">
-                  {/* <img src={Logo} alt="img" className="img-fluid" /> */}
+                  <img src={Logo} alt="img" className="img-fluid" />
                 </span>
                 {isMenuOpen ? (
                   <Drawer
@@ -164,7 +227,7 @@ const Header = () => {
                               </div>
                               <div
                                 className="menuHead-btn"
-                              // onClick={() => history.push("/")}
+                                // onClick={() => history.push("/")}
                               ></div>
                             </div>
                           )}
@@ -322,16 +385,21 @@ const Header = () => {
                 >
                   <Tab
                     label={t("home")}
-                  // onClick={() => {
-                  //   navigate("/");
-                  // }}
+                    onClick={() => {
+                      navigate("/");
+                    }}
                   />
-                  <Tab label={t("stores")} />
+                  <Tab
+                    label={t("stores")}
+                    onClick={() => {
+                      navigate("/allvendors");
+                    }}
+                  />
                   <Tab
                     label={t("categories")}
-                  // onClick={() => {
-                  //   navigate("/categorylist");
-                  // }}
+                    onClick={() => {
+                      navigate("/categorylist");
+                    }}
                   />
                 </Tabs>
               </div>
@@ -444,10 +512,20 @@ const Header = () => {
                   <input
                     type="text"
                     id="search-bar"
-                    placeholder="Search"
+                    placeholder={`${t("Search")}`}
                     className="search-container__input"
+                    onChange={(e) => setSearchText(e.target.value)}
+                    onClick={openSearch}
+                    value={searchText}
                   />
+                  <div className="mic-container__btn">
+                    <MicIcon />
+                  </div>
                 </form>
+                <SearchResult
+                  filterProducts={filterProducts}
+                  filterStores={filterStores}
+                />
                 <Button
                   className="dropBtn d-none d-lg-flex d-xl-none"
                   onClick={() => {
@@ -555,7 +633,7 @@ const Header = () => {
                 )}
                 {/* <LanguageSelect /> */}
                 <div className="lanSelector">
-                  {/* <LanguageSelect /> */}
+                  <LanguageSelect />
                 </div>
               </div>
             </div>
@@ -578,9 +656,15 @@ const Header = () => {
                   <input
                     type="text"
                     id="search-bar"
-                    placeholder="Search"
+                    placeholder={`${t("Search")}`}
                     className="search-container__input"
+                    onChange={(e) => setSearchText(e.target.value)}
+                    onClick={openSearch}
+                    value={searchText}
                   />
+                  <div className="mic-container__btn">
+                    <MicIcon />
+                  </div>
                 </form>
                 <div className="mainheader__btn mainheader__btn--cart d-flex d-lg-none">
                   <AddLocationAltIcon

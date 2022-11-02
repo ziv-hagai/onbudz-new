@@ -113,6 +113,7 @@
   color: #000;
   text-transform: capitalize;
   font-size: 14px;
+  font-family: inherit;
 }
 
 .headerLeft .MuiTabs-root button.Mui-selected {
@@ -185,6 +186,22 @@
 }
 
 .search-container__btn svg path {
+  fill: var(--primary);
+}
+
+.mic-container__btn {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-55%);
+}
+
+.mic-container__btn svg {
+  height: 20px;
+  width: 20px;
+}
+
+.mic-container__btn svg path {
   fill: var(--primary);
 }
 
@@ -381,10 +398,10 @@
   .search-container {
     position: absolute;
     max-width: 100%;
-    width: 100%;
-    margin-right: 0;
+    width: calc(100% - 40px);
+    margin: 20px;
     background: #fff;
-    padding: 20px;
+    /* padding: 20px 0; */
     right: 100%;
     top: 63px;
     box-shadow: 0px 0px 19px 0px rgb(0 0 0 / 3%);
@@ -393,7 +410,7 @@
   }
 
   .search-container__btn {
-    left: 30px;
+    left: 10px;
   }
 
   .search-container.active-search {
@@ -623,9 +640,11 @@
 
 .lanSelector button {
   font-size: 13px;
+  font-family: inherit;
 }
 
-.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused
+  .MuiOutlinedInput-notchedOutline {
   border-color: var(--primary) !important;
 }
 
@@ -656,7 +675,7 @@
   height: 15px;
   width: 15px;
   border-radius: 50%;
-  background: var(--primary);
+  background: #ff2222;
   display: flex;
   position: absolute;
   align-items: center;
@@ -678,7 +697,7 @@
   box-shadow: 0px 1px 8px 0px rgb(0 0 0 / 12%);
   padding: 12px;
   border-radius: 5px;
-  min-width: 270px;
+  min-width: 370px;
   z-index: 9;
 }
 
@@ -688,10 +707,6 @@
 
 .notificationList .chatMainBox__info {
   text-align: left;
-}
-
-.MuiTabs-indicator {
-  background-color: var(--primary) !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -708,6 +723,10 @@
   .mainheader__btn--cart {
     margin-right: 5px;
     padding: 5px 5px;
+  }
+
+  .notificationList {
+    left: -170px;
   }
 }
 
@@ -728,6 +747,6 @@
   min-width: 50px !important;
 }
 
-.userBlock-img>img {
+.userBlock-img > img {
   width: 100%;
 }

@@ -88,18 +88,22 @@
   flex-basis: 75px;
 }
 
-.inputStyle-slect {
+.inputStyle-select {
   border: 1px solid #bbb;
   border-radius: 60px;
   padding: 0 20px;
 }
 
-.inputStyle-slect::before,
-.inputStyle-slect::after {
+.inputStyle-select {
+  direction: rtl !important;
+}
+
+.inputStyle-select::before,
+.inputStyle-select::after {
   display: none !important;
 }
 
-.inputStyle-slect .MuiSelect-icon {
+.inputStyle-select .MuiSelect-icon {
   right: 7px;
 }
 
@@ -289,7 +293,7 @@
   text-align: right;
 }
 
-.inputStyle-slectImg {
+.inputStyle-selectImg {
   padding: 0;
   border: none;
   background-color: transparent;

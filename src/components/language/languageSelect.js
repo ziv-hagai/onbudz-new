@@ -19,7 +19,7 @@ import He from "../../assets/images/israel.png";
 const LanguageSelect = () => {
   const languageMap = {
     en: { label: "English", dir: "ltr", active: true, img: En },
-    he: { label: "עִברִית", dir: "rtl", active: false, img: He },
+    he: { label: "עברית", dir: "rtl", active: false, img: He },
   };
   const selected = localStorage.getItem("i18nextLng") || "en";
   const { t } = useTranslation();
@@ -52,7 +52,9 @@ const LanguageSelect = () => {
       >
         <div>
           <List>
-            <ListSubheader>{t("Select Language")}</ListSubheader>
+            <ListSubheader style={{ fontFamily: "inherit" }}>
+              {t("Select Language")}
+            </ListSubheader>
             {Object.keys(languageMap)?.map((item) => (
               <ListItem
                 button

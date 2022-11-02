@@ -64,9 +64,11 @@ const App = () => {
       <Header />
       <div className="mainContent">
         <div className="mainHeading">
-          <div className="mainTitle">Sign In</div>
+          <div className="mainTitle">{t("Sign In")}</div>
           <div className="mainText">
-            Just sign in if you have an acoount in here. Enjoy our Website
+            {t(
+              "Just sign in if you have an acoount in here. Enjoy our Website"
+            )}
           </div>
         </div>
         <Card variant="outlined" className="cardStyle">

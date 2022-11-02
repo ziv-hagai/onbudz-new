@@ -1,5 +1,5 @@
 .vendorTemplate {
-  padding: 40px 0 30px;
+  padding: 40px 0 100px;
 }
 
 .centerTabs .TabsListUnstyled-horizontal {
@@ -184,10 +184,11 @@
 }
 
 .vendorbanner-brandSubtitle {
-  font-size: 14px;
-  color: #222;
+  font-size: 32px;
+  color: #fff;
   list-style: 22px;
   margin: 0;
+  font-weight: bold;
 }
 
 .vendorAllListBlock {

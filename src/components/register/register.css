@@ -52,7 +52,7 @@
   flex-basis: 55px;
 }
 
-.inputStyle-slect {
+.inputStyle-select {
   border: 1px solid #0000006b;
   border-radius: 60px;
   padding: 0 0px;
@@ -60,22 +60,22 @@
   margin-top: 12px;
 }
 
-.inputStyle-slect::before,
-.inputStyle-slect::after {
+.inputStyle-select::before,
+.inputStyle-select::after {
   display: none !important;
 }
 
-.inputStyle-slect .MuiSelect-icon {
+.inputStyle-select .MuiSelect-icon {
   right: 7px;
 }
 
-.inputStyle-slect .MuiSelect-select {
+.inputStyle-select .MuiSelect-select {
   padding: 8px 12px !important;
   color: #000 !important;
   min-height: 0 !important;
 }
 
-.inputStyle-slect .MuiSelect-select:focus {
+.inputStyle-select .MuiSelect-select:focus {
   background-color: transparent !important;
 }
 

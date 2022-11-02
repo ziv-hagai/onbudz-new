@@ -14,7 +14,7 @@ function CategoryList() {
   const categories = useSelector(
     (state) => state.productCategories.productCategories
   );
-
+  // console.log(categories);
   useEffect(() => {
     dispatch(getProductCategories());
   }, [dispatch]); // eslint-disable-line

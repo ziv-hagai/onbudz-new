@@ -47,7 +47,7 @@ const App = () => {
       <Header />
       <div className="mainContent">
         <div className="mainHeading">
-          <div className="mainTitle">Forgot password</div>
+          <div className="mainTitle">{t("Forgot password")}</div>
           <div className="mainText">
             {/* Just sign in if you have an acoount in here. Enjoy our Website */}
           </div>
@@ -90,9 +90,11 @@ const App = () => {
           </CardContent>
         </Card>
         <Card style={{ marginTop: 20, boxShadow: "none" }}>
-          <CardContent className="bottomLinks">
-            {t("Already have an account? ")}
-            <Link to="/login">{t("Sign In now!")}</Link>
+          <CardContent className="bottomLinks ">
+            <span className="forgot">{t("Already have an account? ")}</span>
+            <Link className="forgot" to="/login">
+              {t("Sign In now!")}
+            </Link>
           </CardContent>
         </Card>
       </div>

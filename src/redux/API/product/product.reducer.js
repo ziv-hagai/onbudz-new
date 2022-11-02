@@ -12,16 +12,13 @@ const INITIAL_STATE = {
 
 const ProductsReducer = (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
-
     case ProductsActionTypes.GET.GET_PRODUCT_PENDING:
-      console.log('a');
       return {
         ...state,
         isProductsPending: true,
       };
 
     case ProductsActionTypes.GET.GET_PRODUCT_SUCCESS:
-      console.log('b');
       return {
         ...state,
         isProductsPending: false,
@@ -30,7 +27,6 @@ const ProductsReducer = (state = INITIAL_STATE, action = {}) => {
       };
 
     case ProductsActionTypes.GET.GET_PRODUCT_ERROR:
-      console.log('c');
       return {
         ...state,
         isProductsPending: false,
@@ -38,14 +34,12 @@ const ProductsReducer = (state = INITIAL_STATE, action = {}) => {
       };
 
     case ProductsActionTypes.GET.GET_PRODUCT_BY_ID_PENDING:
-      console.log('d');
       return {
         ...state,
         isProductPending: true,
       };
 
     case ProductsActionTypes.GET.GET_PRODUCT_BY_ID_SUCCESS:
-      console.log('e');
       return {
         ...state,
         isProductPending: false,
@@ -54,7 +48,6 @@ const ProductsReducer = (state = INITIAL_STATE, action = {}) => {
       };
 
     case ProductsActionTypes.GET.GET_PRODUCT_BY_ID_ERROR:
-      console.log('f');
       return {
         ...state,
         isProductPending: false,
@@ -62,7 +55,6 @@ const ProductsReducer = (state = INITIAL_STATE, action = {}) => {
       };
 
     default:
-      console.log('g');
       return state;
   }
 };

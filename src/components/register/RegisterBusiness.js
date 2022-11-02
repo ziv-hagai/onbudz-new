@@ -154,7 +154,7 @@ export default function RegisterBusiness() {
                   id="demo-simple-select"
                   value={country}
                   label="Country"
-                  className="inputStyle inputStyle-slect"
+                  className="inputStyle inputStyle-select"
                   onChange={handleCountryChange}
                 >
                   {countryList.map((item) => {
@@ -193,7 +193,7 @@ export default function RegisterBusiness() {
                   id="demo-simple-select"
                   value={business}
                   label="Business Type"
-                  className="inputStyle inputStyle-slect"
+                  className="inputStyle inputStyle-select"
                   onChange={handleBusinessListChange}
                 >
                   {businessList.map((item) => {

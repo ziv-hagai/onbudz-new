@@ -148,16 +148,16 @@ export default function Wallets() {
                   name="select"
                   value={amountType}
                   label={t("Amount type")}
-                  style={{ border: 0 }}
-                  className="inputStyle inputStyle-slect"
+                  style={{ border: 0, direction: "ltr" }}
+                  className="inputStyle inputStyle-select"
                   onChange={(e) => {
                     setAmountType(e.target.value);
                     setMaxAmount(user[e.target.value]);
                     setAmount(0);
                   }}
                 >
-                  <MenuItem value="money">Money</MenuItem>
-                  <MenuItem value="credit">Credit</MenuItem>
+                  <MenuItem value="money">{t("Money")}</MenuItem>
+                  <MenuItem value="credit">{t("Credit")}</MenuItem>
                 </Select>
                 <TextField
                   required

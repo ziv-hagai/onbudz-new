@@ -127,7 +127,7 @@ div[data-arrow="right"] {
   box-shadow: 1px 1px 5px 0px rgb(0 0 0 / 8%);
 }
 
-.category-box__img>img {
+.category-box__img > img {
   background-color: #fff;
   object-fit: contain;
   object-position: center;
@@ -141,6 +141,7 @@ div[data-arrow="right"] {
   font-weight: 700;
   color: #333;
   margin: 0;
+  height: 30px;
 }
 
 /* --- Product Tabs --- */
@@ -277,9 +278,11 @@ div[data-arrow="right"] {
   height: 50%;
   width: 100%;
   background: rgb(0, 0, 0);
-  background: linear-gradient(0deg,
-      rgba(0, 0, 0, 0.6867121848739496) 0%,
-      rgba(255, 182, 182, 0) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.6867121848739496) 0%,
+    rgba(255, 182, 182, 0) 100%
+  );
   position: absolute;
   left: 0;
   bottom: 0;
@@ -316,6 +319,7 @@ div[data-arrow="right"] {
   font-weight: 600;
   color: #888;
   text-transform: capitalize;
+  font-family: inherit;
 }
 
 .categoriesSliderTabs button.activetab {
@@ -452,10 +456,6 @@ div[data-arrow="right"] {
   text-align: left;
 }
 
-.page-link {
-  color: var(--primary)
-}
-
 @media only screen and (max-width: 991px) {
   .product-Module {
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -494,11 +494,11 @@ div[data-arrow="right"] {
 }
 
 .otherCategories .swiper-slide {
-  width: 124px;
+  width: 90px;
 }
 
 [dir="rtl"] .otherCategories .swiper-slide {
-  width: 85px;
+  /* width: 85px; */
 }
 
 .otherCategory {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import PercentIcon from "@mui/icons-material/Percent";
+
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useNavigate } from "react-router-dom";
@@ -127,78 +128,128 @@ export default function Cart() {
               ? cart.map((item, i) => {
                   return (
                     <li className="cartProduct-Module__list" key={item.id}>
+                      <div
+                        className="cartProduct-box__img"
+                        style={{
+                          backgroundImage: `url(${item.product.image})`,
+                        }}
+                      ></div>
+
                       <div className="cartProduct-box">
-                        <div
-                          className="cartProduct-box__img"
-                          style={{
-                            backgroundImage: `url(${item.product.image})`,
-                          }}
-                        ></div>
-                        <div className="cartProduct-box__info">
-                          <h6 className="cartProduct-box__brand">
-                            {item.product.title}
-                          </h6>
-                          <h5 className="cartProduct-box__name">
-                            {item.product.description}
-                          </h5>
-                          {item.bonusRule && (
-                            <div className="cartProduct-box__rule">
-                              {t("Discount rule")}: {item.bonusRule.title}
-                            </div>
-                          )}
-                          {!promoCodeActvated ? (
-                            <span className="cartProduct-box__price">
-                              <div className="cartProduct-box__price">
-                                {/* {item?.price || 0}$ */}
-                                {item.quantity > 0 && item.total + "₪"}
-                                {item.product.credit
-                                  ? " / " +
-                                    item?.product?.credit?.toFixed(1) *
-                                      item.quantity +
-                                    " e-credit"
-                                  : ""}
+                        <h6 className="cartProduct-box__brand">
+                          {item.product.title}
+                        </h6>
+                        <div className="cartProduct-box__noImgNoTitle">
+                          <div className="cartProduct-box__info">
+                            <h5 className="cartProduct-box__name">
+                              {item.product.description}
+                            </h5>
+                            {item.bonusRule && (
+                              <div className="cartProduct-box__rule">
+                                {t("Discount rule")}: {item.bonusRule.title}
                               </div>
-                              <QuantitySelector
-                                onChange={(e) =>
-                                  handleChangeQuantity(e, item.productId)
-                                }
-                                minValue={1}
-                                value={
-                                  numbersOfItems[item.productId] ||
-                                  item.quantity
-                                }
-                              />
-                            </span>
-                          ) : (
-                            <>
-                              <div className="cartProduct-box__price">
-                                {/* {item.discountPrice}₪ */}
-                                {item?.discountPrice && (
-                                  <>
-                                    {item.quantity > 0 &&
-                                      +item.discountTotal.toFixed(1) + "₪"}
-                                    <div className="cartProduct-box__price__discount">
-                                      {/* {item?.price || 0}₪ */}
+                            )}
+                            {!promoCodeActvated ? (
+                              <span
+                                className="cartProduct-box__price"
+                                style={{
+                                  justifyContent: "space-between",
+                                  alignItems: "end",
+                                }}
+                              >
+                                <div className="cartProduct-box__price">
+                                  {/* {item?.price || 0}$ */}
+                                  {console.log(1)}
+                                  {item.quantity > 0 && item.total + "₪"}
+                                  {item.product.credit
+                                    ? " / " +
+                                      item?.product?.credit?.toFixed(1) *
+                                        item.quantity +
+                                      " e-credit"
+                                    : ""}
+                                </div>
+                                <QuantitySelector
+                                  onChange={(e) =>
+                                    handleChangeQuantity(e, item.productId)
+                                  }
+                                  minValue={1}
+                                  value={
+                                    numbersOfItems[item.productId] ||
+                                    item.quantity
+                                  }
+                                />
+                              </span>
+                            ) : (
+                              <>
+                                <div
+                                  className="cartProduct-box__price"
+                                  style={{ padding: "10px 0" }}
+                                >
+                                  {/* {item.discountPrice}₪ */}
+                                  {console.log(2)}
+                                  {item?.discountPrice && (
+                                    <>
                                       {item.quantity > 0 &&
-                                        +item.total.toFixed(1) + "₪ / "}
-                                      {+item?.product?.credit?.toFixed(1) +
-                                        " e-credit"}
-                                    </div>
-                                  </>
-                                )}
-                              </div>
-                              <QuantitySelector
-                                onChange={(e) =>
-                                  handleChangeQuantity(e, item.productId)
-                                }
-                                minValue={1}
-                                value={
-                                  numbersOfItems[item.productId] ||
-                                  item.quantity
-                                }
-                              />
-                            </>
-                          )}
+                                        +item.discountTotal.toFixed(1) + "₪"}
+                                      <div className="cartProduct-box__price__discount">
+                                        {/* {item?.price || 0}₪ */}
+                                        {item.quantity > 0 &&
+                                          +item.total.toFixed(1) + "₪"}
+                                        {item.product.credit
+                                          ? " / " +
+                                            item?.product?.credit?.toFixed(1) +
+                                            " e-credit"
+                                          : ""}
+                                      </div>
+                                    </>
+                                  )}
+                                </div>
+                                <QuantitySelector
+                                  onChange={(e) =>
+                                    handleChangeQuantity(e, item.productId)
+                                  }
+                                  minValue={1}
+                                  value={
+                                    numbersOfItems[item.productId] ||
+                                    item.quantity
+                                  }
+                                />
+                              </>
+                            )}
+                          </div>
+                          <div className="cartProduct-rightBlock">
+                            <div className="cartProduct-box__brandBox">
+                              {item.product?.merchant?.image && (
+                                <span className="cartProduct-brandImage">
+                                  <img
+                                    src={item.product.merchant.image}
+                                    alt=""
+                                    height={20}
+                                    width={20}
+                                    className="img-fluid"
+                                  />
+                                </span>
+                              )}
+                              {/* <p className="cartProduct-brandName">
+                              {item.product?.merchant?.title || t("No merchant")}
+                            </p> */}
+                            </div>
+                            <p className="cartProduct-brandName">
+                              {item.product?.merchant?.title ||
+                                t("No merchant")}
+                            </p>
+                            <div
+                              className="removeBtn"
+                              onClick={() => {
+                                dispatch(removeItemFromCart(item.product.id));
+                                toast.success(
+                                  "The product has been successfully removed"
+                                );
+                              }}
+                            >
+                              <DeleteIcon />
+                            </div>
+                          </div>
                         </div>
                       </div>
                       {/* <QuantitySelector
@@ -208,38 +259,6 @@ export default function Cart() {
                         minValue={1}
                         value={numbersOfItems[item.productId] || item.quantity}
                       /> */}
-                      <div className="cartProduct-rightBlock">
-                        <div className="cartProduct-box__brandBox">
-                          {item.product?.merchant?.image && (
-                            <span className="cartProduct-brandImage">
-                              <img
-                                src={item.product.merchant.image}
-                                alt=""
-                                height={20}
-                                width={20}
-                                className="img-fluid"
-                              />
-                            </span>
-                          )}
-                          {/* <p className="cartProduct-brandName">
-                            {item.product?.merchant?.title || t("No merchant")}
-                          </p> */}
-                        </div>
-                        <p className="cartProduct-brandName">
-                          {item.product?.merchant?.title || t("No merchant")}
-                        </p>
-                        <div
-                          className="removeBtn"
-                          onClick={() => {
-                            dispatch(removeItemFromCart(item.product.id));
-                            toast.success(
-                              "The product has been successfully removed"
-                            );
-                          }}
-                        >
-                          <DeleteIcon />
-                        </div>
-                      </div>
                     </li>
                   );
                 })

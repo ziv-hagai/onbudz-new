@@ -19,26 +19,26 @@ export default function AllVendor() {
   const merchantsPending = useSelector(
     (state) => state.merchant.isMerchantsPending
   );
-  const [selectedTab, setSelectedTab] = useState({ id: "all", title: "all" });
+  const [selectedTab, setSelectedTab] = useState({ id: "all", title: "all" }); // eslint-disable-line
   const [categories, setCategories] = useState([]);
   const [merchantsList, setMerchantsList] = useState(merchants);
 
-  const handleChangeTab = (e, newValue) => {
-    if (newValue === "all") {
-      setMerchantsList(merchants);
-      return setSelectedTab({ id: "all", category: null });
-    }
-    const category = categories.find(
-      (category) => category.title === e.target.textContent
-    );
-    setSelectedTab({ id: newValue, category });
-    const list = merchants?.find((merchant) =>
-      merchant?.categories?.map((_category) => _category.id === category.id)
-        ? merchant
-        : null
-    );
-    setMerchantsList([list]);
-  };
+  // const handleChangeTab = (e, newValue) => {
+  //   if (newValue === "all") {
+  //     setMerchantsList(merchants);
+  //     return setSelectedTab({ id: "all", category: null });
+  //   }
+  //   const category = categories.find(
+  //     (category) => category.title === e.target.textContent
+  //   );
+  //   setSelectedTab({ id: newValue, category });
+  //   const list = merchants?.find((merchant) =>
+  //     merchant?.categories?.map((_category) => _category.id === category.id)
+  //       ? merchant
+  //       : null
+  //   );
+  //   setMerchantsList([list]);
+  // };
   useEffect(() => {
     dispatch(getMerchants());
   }, [dispatch]); // eslint-disable-line
@@ -100,7 +100,7 @@ export default function AllVendor() {
       <div className="pageTemplate">
         <div className="container">
           <ScrollingCarousel>
-            {/* <Tabs
+            <Tabs
               value={selectedTab.id}
               // onChange={handleChangeTab}
               className="categoriesSliderTabs"
@@ -113,7 +113,7 @@ export default function AllVendor() {
                   {category.title}
                 </Tab>
               ))}
-            </Tabs> */}
+            </Tabs>
           </ScrollingCarousel>
           {selectedTab.id === "all" && (
             <div className="vendorAllListBlock">
@@ -131,7 +131,9 @@ export default function AllVendor() {
                         }}
                       >
                         <div className="category-box text-center">
-                          <span className="category-boxSubTitle">12km</span>
+                          <span className="category-boxSubTitle">
+                            12 {t("km")}
+                          </span>
                           <div className="category-box__img">
                             <img
                               src={item.image}

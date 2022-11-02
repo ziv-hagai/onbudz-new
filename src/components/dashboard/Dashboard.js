@@ -23,15 +23,24 @@ import Pagination from "./pagination";
 import OtherCategories from "./otherCategories/OtherCategories";
 
 //icons
-import { FaTheaterMasks } from "react-icons/fa";
-import { MdAttractions } from "react-icons/md";
-import { GiPopcorn } from "react-icons/gi";
-import { MdRoomService } from "react-icons/md";
-import { TbMassage } from "react-icons/tb";
-import { FaUmbrellaBeach } from "react-icons/fa";
-import { RiPriceTagFill } from "react-icons/ri";
+import { MdLocalLaundryService } from "react-icons/md";
+import { GiConverseShoe } from "react-icons/gi";
+import { GiRunningShoe } from "react-icons/gi";
+import { GiLargeDress } from "react-icons/gi";
+import { GiClothes } from "react-icons/gi";
+import { GiKitchenKnives } from "react-icons/gi";
+import { RiShirtFill } from "react-icons/ri";
+import { GiFlipFlops } from "react-icons/gi";
+import { MdLocalPharmacy } from "react-icons/md";
+import { ImBooks } from "react-icons/im";
+import { GiSoccerBall } from "react-icons/gi";
+import { GiHighHeel } from "react-icons/gi";
+import { MdCleanHands } from "react-icons/md";
+import { GiLipstick } from "react-icons/gi";
+import { MdFastfood } from "react-icons/md";
+import { GiSteeltoeBoots } from "react-icons/gi";
 import { MdToys } from "react-icons/md";
-import { HiLightBulb } from "react-icons/hi";
+import { BsWatch } from "react-icons/bs";
 
 const screenWidth = window.innerWidth;
 let makeProductsPerPage = 0;
@@ -48,6 +57,7 @@ if (screenWidth > 991) {
 export default function Dashboard() {
   const [products, setProducts] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(makeProductsPerPage);
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -67,11 +77,7 @@ export default function Dashboard() {
     (state) => state.productCategories.productCategories
   );
 
-  const x = useSelector((state) => state);
-  // console.log(x);
-
   const user = useSelector((state) => state.user.user);
-
   useEffect(() => {
     dispatch(getMerchants());
     dispatch(getProductCategories());
@@ -108,48 +114,110 @@ export default function Dashboard() {
     if (newValue === "all") {
       setFilterProducts(products);
     } else {
-      setFilterProducts(
-        products.filter((product) => product.categoryId === newValue)
-      );
+      let productByCategoryById = [];
+      categories.map((category) => {
+        if (category.parent === newValue) {
+          category.products.map((product) => {
+            productByCategoryById.push(product);
+            return product;
+          });
+        }
+        return category;
+      });
+      setFilterProducts(productByCategoryById);
     }
   };
 
   const otherCategoriesArr = [
     {
-      title: t("plays&performances"),
-      icon: <FaTheaterMasks />,
+      title: t("Appliances"),
+      icon: <MdLocalLaundryService />,
+      id: 17,
     },
     {
-      title: t("attractions&activities"),
-      icon: <MdAttractions />,
+      title: t("Kids shoes"),
+      icon: <GiConverseShoe />,
+      id: 11,
     },
     {
-      title: t("cinema&movies"),
-      icon: <GiPopcorn />,
+      title: t("Mens shoes"),
+      icon: <GiRunningShoe />,
+      id: 12,
     },
     {
-      title: t("food&treats"),
-      icon: <MdRoomService />,
+      title: t("Girls dresses"),
+      icon: <GiLargeDress />,
+      id: 10,
     },
     {
-      title: t("spa&treatments"),
-      icon: <TbMassage />,
+      title: t("kids clothes"),
+      icon: <GiClothes />,
+      id: 18,
     },
     {
-      title: t("vacationInIsrael"),
-      icon: <FaUmbrellaBeach />,
+      title: t("Cookware"),
+      icon: <GiKitchenKnives />,
+      id: 2,
     },
     {
-      title: t("benefitsToTheHouse"),
-      icon: <RiPriceTagFill />,
+      title: t("Mens clothes"),
+      icon: <RiShirtFill />,
+      id: 15,
     },
     {
-      title: t("children'sCorner"),
+      title: t("Flip flops"),
+      icon: <GiFlipFlops />,
+      id: 13,
+    },
+    {
+      title: t("pharm"),
+      icon: <MdLocalPharmacy />,
+      id: 5,
+    },
+    {
+      title: t("books"),
+      icon: <ImBooks />,
+      id: 8,
+    },
+    {
+      title: t("sport"),
+      icon: <GiSoccerBall />,
+      id: 6,
+    },
+    {
+      title: t("women shoes"),
+      icon: <GiHighHeel />,
+      id: 16,
+    },
+    {
+      title: t("hygiene"),
+      icon: <MdCleanHands />,
+      id: 4,
+    },
+    {
+      title: t("care"),
+      icon: <GiLipstick />,
+      id: 1,
+    },
+    {
+      title: t("food"),
+      icon: <MdFastfood />,
+      id: 3,
+    },
+    {
+      title: t("boots"),
+      icon: <GiSteeltoeBoots />,
+      id: 14,
+    },
+    {
+      title: t("toys"),
       icon: <MdToys />,
+      id: 9,
     },
     {
-      title: t("enrichment&subscriptions"),
-      icon: <HiLightBulb />,
+      title: t("watches"),
+      icon: <BsWatch />,
+      id: 7,
     },
   ];
 
@@ -161,7 +229,7 @@ export default function Dashboard() {
         <div className="container">
           <div className="block-slider">
             <div className="module-heading">
-              {/* <OtherCategories slider={true} categories={otherCategoriesArr} /> */}
+              <OtherCategories slider={true} categories={otherCategoriesArr} />
 
               <div className="featured-product">
                 <div className="module-heading">
@@ -192,8 +260,8 @@ export default function Dashboard() {
                 <div className="balanceBoxInner">
                   <p className="balanceBoxTitle">{t("yourBalance")}</p>
                   <h6 className="balanceBoxprice">
-                    {user?.money?.toFixed(1) || 0}₪/
-                    {user?.credit?.toFixed(1) || 0} e-credit
+                    {user?.money?.toFixed(1) || 0} ₪ /
+                    {user?.credit?.toFixed(1) || 0} {t("e-credit")}
                   </h6>
                 </div>
               </div>
@@ -261,11 +329,13 @@ export default function Dashboard() {
               All
             </Tab>
             {categories.length > 0 &&
-              categories.map((category) => (
-                <Tab value={category.id} label={category.title}>
-                  {category.title}
-                </Tab>
-              ))}
+              categories
+                .filter((category) => !category.parent)
+                .map((category) => (
+                  <Tab value={category.id} label={category.title}>
+                    {category.title}
+                  </Tab>
+                ))}
           </Tabs>
           {/*</ScrollingCarousel>*/}
 
@@ -273,69 +343,69 @@ export default function Dashboard() {
             <ul className="product-Module">
               {filterProducts.length > 0
                 ? currentFilterProducts.map((product) => (
-                  <>
-                    <li
-                      className="product-Module__list isLink"
-                      onClick={() => {
-                        // if (product.imagename === "booking") {
-                        //   navigate("/company", {
-                        //     state: { isBookingApp: true },
-                        //   });
-                        // } else {
-                        navigate(`/product/${product.id}`, {
-                          state: { id: product.id },
-                        });
-                        // }
-                      }}
-                    >
-                      <div className="product-box">
-                        <div
-                          className="product-box__img"
-                          style={{ backgroundImage: `url(${product.image})` }}
-                        >
-                          <div className="product-box__likeBtn">
-                            <FavoriteBorderOutlinedIcon
-                              onClick={() => handleFavChange()}
-                            />
+                    <>
+                      <li
+                        className="product-Module__list isLink"
+                        onClick={() => {
+                          // if (product.imagename === "booking") {
+                          //   navigate("/company", {
+                          //     state: { isBookingApp: true },
+                          //   });
+                          // } else {
+                          navigate(`/product/${product.id}`, {
+                            state: { id: product.id },
+                          });
+                          // }
+                        }}
+                      >
+                        <div className="product-box">
+                          <div
+                            className="product-box__img"
+                            style={{ backgroundImage: `url(${product.image})` }}
+                          >
+                            <div className="product-box__likeBtn">
+                              <FavoriteBorderOutlinedIcon
+                                onClick={() => handleFavChange()}
+                              />
+                            </div>
+                            {product?.discount && (
+                              <div className="product-box__discount">
+                                <span className="product-box__off">
+                                  {product.discountType ? "" : "-"}
+                                  {product.discount}
+                                  {product.discountType}
+                                </span>
+                              </div>
+                            )}
                           </div>
-                          {product?.discount && (
-                            <div className="product-box__discount">
-                              <span className="product-box__off">
-                                {product.discountType ? "" : "-"}
-                                {product.discount}
-                                {product.discountType}
+                          <div className="product-box__info">
+                            <div className="product-box__infoTop">
+                              <h6 className="product-box__brand">
+                                {product.title}
+                              </h6>
+                              <span className="product-box__price">
+                                {product?.oldPrice && (
+                                  <>
+                                    <s>{product.oldPrice}₪</s>&nbsp;
+                                  </>
+                                )}
+                                {product?.price || 0}₪
+                                {product?.credit && (
+                                  <>
+                                    {" "}
+                                    + <br></br> {product.credit} e-credits
+                                  </>
+                                )}
                               </span>
                             </div>
-                          )}
-                        </div>
-                        <div className="product-box__info">
-                          <div className="product-box__infoTop">
-                            <h6 className="product-box__brand">
-                              {product.title}
-                            </h6>
-                            <span className="product-box__price">
-                              {product?.oldPrice && (
-                                <>
-                                  <s>{product.oldPrice}₪</s>&nbsp;
-                                </>
-                              )}
-                              {product?.price || 0}₪
-                              {product?.credit && (
-                                <>
-                                  {" "}
-                                  + <br></br> {product.credit} e-credits
-                                </>
-                              )}
-                            </span>
+                            {/*<h5 className="product-box__name">*/}
+                            {/*  3 {t("boxSimple")}{" "}*/}
+                            {/*</h5>*/}
                           </div>
-                          {/*<h5 className="product-box__name">*/}
-                          {/*  3 {t("boxSimple")}{" "}*/}
-                          {/*</h5>*/}
                         </div>
-                      </div>
-                    </li>
-                  </>
-                ))
+                      </li>
+                    </>
+                  ))
                 : t("No products")}
             </ul>
             {/* <ChatBot /> */}

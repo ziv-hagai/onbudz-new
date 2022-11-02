@@ -489,6 +489,11 @@ p .chatDetailsHead {
   right: 10px;
 }
 
+[dir="rtl"] .mic-container__btn {
+  right: auto;
+  left: 10px;
+}
+
 [dir="rtl"] .addedUserBlock {
   margin-right: -16px;
   margin-left: 0;

@@ -14,19 +14,24 @@ function OtherCategories({ categories, slider }) {
     <div className="otherCategories">
       {categories.length ? (
         slider ? (
-          <Swiper freeMode={true} slidesPerView={"auto"} spaceBetween={10}>
+          <Swiper
+            freeMode={true}
+            slidesPerView={"auto"}
+            spaceBetween={15}
+            style={{ direction: "ltr" }}
+          >
             {categories
               .filter((category) => !category.parent)
               .map((category, index) => {
                 return (
                   <SwiperSlide
                     key={index}
-                    // style={{ width: '85px' }}
-                    // onClick={() => {
-                    //   navigate(`/category/${category.id}`, {
-                    //     state: { id: category.id },
-                    //   });
-                    // }}
+                    style={{ width: "auto" }}
+                    onClick={() => {
+                      navigate(`/category/${category.id}`, {
+                        state: { id: category.id },
+                      });
+                    }}
                   >
                     <div
                       className="otherCategory"

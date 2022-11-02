@@ -7,6 +7,7 @@ import "swiper/swiper.min.css";
 import noImage from "../../assets/images/noimage.png";
 
 function OnlyCategoryList({ divClassName, h5ClassName, categories, slider }) {
+  // console.log(categories);
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -14,7 +15,12 @@ function OnlyCategoryList({ divClassName, h5ClassName, categories, slider }) {
     <>
       {categories.length ? (
         slider ? (
-          <Swiper freeMode={true} slidesPerView={"auto"} spaceBetween={10}>
+          <Swiper
+            freeMode={true}
+            slidesPerView={"auto"}
+            spaceBetween={10}
+            style={{ direction: "ltr" }}
+          >
             {categories
               .filter((category) => !category.parent)
               .map((category, index) => {

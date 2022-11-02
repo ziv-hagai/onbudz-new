@@ -13,6 +13,7 @@ const Coupon = ({ title, discountType, discountValue, subTitle, image, backgroun
             style={{
                 backgroundImage: `url(${couponCover})`,
                 backgroundColor,
+                width: '363px',
                 ...style
             }}
         >

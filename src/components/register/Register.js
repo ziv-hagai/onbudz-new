@@ -167,7 +167,7 @@ export default function Register() {
                 name="select"
                 value={country}
                 label={t("country")}
-                className="inputStyle inputStyle-slect"
+                className="inputStyle inputStyle-select"
                 {...register("country")}
                 onChange={handleCountryChange}
                 error={!!errors.select}
@@ -199,7 +199,7 @@ export default function Register() {
                 id="password"
                 className="inputStyle"
                 name="password"
-                label={t("Password")}
+                label={t("password")}
                 fullWidth
                 type="password"
                 margin="dense"

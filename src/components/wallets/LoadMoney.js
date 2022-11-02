@@ -68,7 +68,7 @@ export default function LoadMoney({ credit = false }) {
                   navigate("/checkout");
                 }}
               >
-                {t(credit ? "Load e-credit" : "loadMoney")}
+                {t(credit ? "Load E-Credit" : "loadMoney")}
               </Button>
             </div>
           </div>
