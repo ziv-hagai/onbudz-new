@@ -23,9 +23,21 @@ const CouponsList = () => {
         <div className='caseback-center'>
             <Swiper
                 freeMode={true}
-                slidesPerView={"auto"}
+                slidesPerView={1}
+                style={{ width: "auto" }}
+                breakpoints={{
+                    // when window width is >= 600px
+                    600: {
+                        slidesPerView: 2,
+                    },
+                    // when window width is >= 900px
+                    900: {
+                        slidesPerView: 3,
+                    },
+                }}
+                // slidesPerView={"auto"}
                 spaceBetween={10}
-                style={{ direction: "ltr" }}
+            // style={{ direction: "ltr" }}
             >
                 {coupons
                     .map((coupon, index) => {

@@ -17,9 +17,21 @@ function OnlyCategoryList({ divClassName, h5ClassName, categories, slider }) {
         slider ? (
           <Swiper
             freeMode={true}
-            slidesPerView={"auto"}
+            // slidesPerView={"auto"}
+            slidesPerView={2}
+            style={{ width: "auto" }}
+            breakpoints={{
+              // when window width is >= 600px
+              600: {
+                slidesPerView: 3,
+              },
+              // when window width is >= 900px
+              900: {
+                slidesPerView: 4,
+              },
+            }}
             spaceBetween={10}
-            style={{ direction: "ltr" }}
+          // style={{ direction: "ltr" }}
           >
             {categories
               .filter((category) => !category.parent)
@@ -38,7 +50,7 @@ function OnlyCategoryList({ divClassName, h5ClassName, categories, slider }) {
                       className={divClassName}
                       style={{
                         backgroundImage: `url(${category.image || noImage})`,
-                        width: "363px",
+                        // width: "363px",
                         cursor: "pointer",
                       }}
                     >

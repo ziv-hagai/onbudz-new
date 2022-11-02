@@ -248,6 +248,7 @@ export default function Dashboard() {
                     slider={true}
                     categories={categories}
                     divClassName="featuredProduct-box"
+                    // divClassName="featuredCategory-box"
                     h5ClassName="featuredProduct-box__title"
                   />
                 </div>
