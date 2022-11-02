@@ -12,14 +12,16 @@ import { Tab, Tabs } from "@material-ui/core";
 // import Rating from "@mui/material/Rating";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 // import LinearProgress from "@mui/material/LinearProgress";
-
+import { Button } from "@material-ui/core";
+import PhoneIcon from '@mui/icons-material/Phone';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Header from "../header/Header";
 import {
   getMerchantById,
   getMerchantProducts,
 } from "../../redux/API/merchant/merchant.action";
 
-import Art from "../../assets/images/art.jpg";
+import Art from "../../assets/images/art.png";
 import "../vendor/vendorsDetails.css";
 
 const blue = {
@@ -174,21 +176,37 @@ export default function VendorsDetails() {
                   </div>
                 </div>
               </div>
-              {/*<div className="col-lg-4">*/}
-              {/*  <Button className="blueBtn">{t("follow")}</Button>*/}
-              {/*</div>*/}
+              <div className="col-lg-4">
+                <Button className="blueBtn">{t("follow")}</Button>
+              </div>
             </div>
           </div>
+          <div className="second-row">
 
-          <div className="vendorContent">
-            {merchant?.description && (
-              <>
-                <h6 className="vendorContent-title">{t("description")}</h6>
-                <p className="vendorContent-text">{merchant.description}</p>
-              </>
-            )}
+            <div className="vendorContent">
+              {merchant?.description && (
+                <>
+                  <h6 className="vendorContent-title">{t("description")}</h6>
+                  <p className="vendorContent-text">{merchant.description}</p>
+                </>
+              )}
+            </div>
+            <div className="vendorContent left">
+              <div className="contacts">
+
+                <div className="vendorbanner-phone">
+                  <PhoneIcon />
+                  <a href='tel:0509876543'>0509876543</a>
+                </div>
+
+                <div className="vendorbanner-phone">
+                  <LocationOnIcon />
+                  <div>Toronto, huron 2</div>
+                </div>
+              </div>
+            </div>
+
           </div>
-
           <div>
             <Tabs
               // defaultSelectedIndex={1}
@@ -209,61 +227,61 @@ export default function VendorsDetails() {
           <ul className="product-Module">
             {filterProducts.length > 0
               ? filterProducts.map((product) => (
-                  <>
-                    <li
-                      className="product-Module__list isLink"
-                      onClick={() => {
-                        // if (catItem.imagename === "booking") {
-                        //   navigate("/company", {
-                        //     state: { isBookingApp: true },
-                        //   });
-                        // } else {
-                        navigate(`/product/${product.id}`, {
-                          state: { id: product.id },
-                        });
-                        // }
-                      }}
-                    >
-                      <div className="product-box">
-                        <div
-                          className="product-box__img"
-                          style={{ backgroundImage: `url(${product.image})` }}
-                        >
-                          <div className="product-box__likeBtn">
-                            <FavoriteBorderOutlinedIcon />
-                          </div>
-                          {product?.discount && (
-                            <div className="product-box__discount">
-                              <span className="product-box__off">
-                                {product.discountType ? "" : "-"}
-                                {product.discount}
-                                {product.discountType}
-                              </span>
-                            </div>
-                          )}
+                <>
+                  <li
+                    className="product-Module__list isLink"
+                    onClick={() => {
+                      // if (catItem.imagename === "booking") {
+                      //   navigate("/company", {
+                      //     state: { isBookingApp: true },
+                      //   });
+                      // } else {
+                      navigate(`/product/${product.id}`, {
+                        state: { id: product.id },
+                      });
+                      // }
+                    }}
+                  >
+                    <div className="product-box">
+                      <div
+                        className="product-box__img"
+                        style={{ backgroundImage: `url(${product.image})` }}
+                      >
+                        <div className="product-box__likeBtn">
+                          <FavoriteBorderOutlinedIcon />
                         </div>
-                        <div className="product-box__info">
-                          <div className="product-box__infoTop">
-                            <h6 className="product-box__brand">
-                              {product.title}
-                            </h6>
-                            <span className="product-box__price">
-                              {product?.oldPrice && (
-                                <>
-                                  <s>{product.oldPrice}₪</s>&nbsp;
-                                </>
-                              )}
-                              {product?.price || 0}₪
+                        {product?.discount && (
+                          <div className="product-box__discount">
+                            <span className="product-box__off">
+                              {product.discountType ? "" : "-"}
+                              {product.discount}
+                              {product.discountType}
                             </span>
                           </div>
-                          {/*<h5 className="product-box__name">*/}
-                          {/*  3 {t("boxSimple")}*/}
-                          {/*</h5>*/}
-                        </div>
+                        )}
                       </div>
-                    </li>
-                  </>
-                ))
+                      <div className="product-box__info">
+                        <div className="product-box__infoTop">
+                          <h6 className="product-box__brand">
+                            {product.title}
+                          </h6>
+                          <span className="product-box__price">
+                            {product?.oldPrice && (
+                              <>
+                                <s>{product.oldPrice}₪</s>&nbsp;
+                              </>
+                            )}
+                            {product?.price || 0}₪
+                          </span>
+                        </div>
+                        {/*<h5 className="product-box__name">*/}
+                        {/*  3 {t("boxSimple")}*/}
+                        {/*</h5>*/}
+                      </div>
+                    </div>
+                  </li>
+                </>
+              ))
               : t("No products")}
           </ul>
           <TabsUnstyled
@@ -282,92 +300,92 @@ export default function VendorsDetails() {
               <ul className="product-Module">
                 {products?.filter((product) => !!product.isTopRated).length > 0
                   ? products
-                      .filter((product) => !!product.isTopRated)
-                      .map((product, index) => (
-                        <li className="product-Module__list" key={index}>
-                          <div className="product-box">
-                            <div
-                              onClick={() => {
-                                navigate(`/product/${product.id}`, {
-                                  state: { id: product.id },
-                                });
-                              }}
-                              className="product-box__img isLink"
-                              style={{
-                                backgroundImage: `url(${product.image})`,
-                              }}
-                            >
-                              <div className="product-box__likeBtn">
-                                <FavoriteBorderOutlinedIcon />
-                              </div>
-                              {/*<div className="product-box__discount">*/}
-                              {/*  <span className="product-box__off">45%</span>*/}
-                              {/*</div>*/}
+                    .filter((product) => !!product.isTopRated)
+                    .map((product, index) => (
+                      <li className="product-Module__list" key={index}>
+                        <div className="product-box">
+                          <div
+                            onClick={() => {
+                              navigate(`/product/${product.id}`, {
+                                state: { id: product.id },
+                              });
+                            }}
+                            className="product-box__img isLink"
+                            style={{
+                              backgroundImage: `url(${product.image})`,
+                            }}
+                          >
+                            <div className="product-box__likeBtn">
+                              <FavoriteBorderOutlinedIcon />
                             </div>
-                            <div className="product-box__info">
-                              <div className="product-box__infoTop">
-                                <h6 className="product-box__brand">
-                                  {product.title}
-                                </h6>
-                                <span className="product-box__price">
-                                  {product?.price || 0}₪
-                                </span>
-                              </div>
-                              {/*<h5 className="product-box__name">*/}
-                              {/*  3 {t("boxSimple")}*/}
-                              {/*</h5>*/}
-                            </div>
+                            {/*<div className="product-box__discount">*/}
+                            {/*  <span className="product-box__off">45%</span>*/}
+                            {/*</div>*/}
                           </div>
-                        </li>
-                      ))
+                          <div className="product-box__info">
+                            <div className="product-box__infoTop">
+                              <h6 className="product-box__brand">
+                                {product.title}
+                              </h6>
+                              <span className="product-box__price">
+                                {product?.price || 0}₪
+                              </span>
+                            </div>
+                            {/*<h5 className="product-box__name">*/}
+                            {/*  3 {t("boxSimple")}*/}
+                            {/*</h5>*/}
+                          </div>
+                        </div>
+                      </li>
+                    ))
                   : t("No products")}
               </ul>
             </TabPanel>
             <TabPanel value={1}>
               <ul className="product-Module">
                 {products?.filter((product) => !!product.isCollection).length >
-                0
+                  0
                   ? products
-                      .filter((product) => !!product.isCollection)
-                      .map((product, i) => (
-                        <li className="product-Module__list isLink" key={i}>
+                    .filter((product) => !!product.isCollection)
+                    .map((product, i) => (
+                      <li className="product-Module__list isLink" key={i}>
+                        <div
+                          className="product-box"
+                          onClick={() => {
+                            navigate(`/product/${product.id}`, {
+                              state: { id: product.id },
+                            });
+                          }}
+                        >
                           <div
-                            className="product-box"
-                            onClick={() => {
-                              navigate(`/product/${product.id}`, {
-                                state: { id: product.id },
-                              });
+                            className="product-box__img"
+                            style={{
+                              backgroundImage: `url(${product.image})`,
                             }}
                           >
-                            <div
-                              className="product-box__img"
-                              style={{
-                                backgroundImage: `url(${product.image})`,
-                              }}
-                            >
-                              <div className="product-box__likeBtn">
-                                <FavoriteBorderOutlinedIcon />
-                              </div>
-                              {/*<div className="product-box__discount">*/}
-                              {/*  <span className="product-box__off">45%</span>*/}
-                              {/*</div>*/}
+                            <div className="product-box__likeBtn">
+                              <FavoriteBorderOutlinedIcon />
                             </div>
-                            <div className="product-box__info">
-                              <div className="product-box__infoTop">
-                                <h6 className="product-box__brand">
-                                  {product.title}
-                                </h6>
-                                <span className="product-box__price">
-                                  {product?.price || 0}₪
-                                </span>
-                              </div>
-                              {/*<h5 className="product-box__name">*/}
-                              {/*  3 {t("boxSimple")}*/}
-                              {/*</h5>*/}
-                            </div>
+                            {/*<div className="product-box__discount">*/}
+                            {/*  <span className="product-box__off">45%</span>*/}
+                            {/*</div>*/}
                           </div>
-                        </li>
-                      ))
+                          <div className="product-box__info">
+                            <div className="product-box__infoTop">
+                              <h6 className="product-box__brand">
+                                {product.title}
+                              </h6>
+                              <span className="product-box__price">
+                                {product?.price || 0}₪
+                              </span>
+                            </div>
+                            {/*<h5 className="product-box__name">*/}
+                            {/*  3 {t("boxSimple")}*/}
+                            {/*</h5>*/}
+                          </div>
+                        </div>
+                      </li>
+                    ))
                   : t("No products")}
               </ul>
             </TabPanel>

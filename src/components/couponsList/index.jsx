@@ -22,28 +22,28 @@ const CouponsList = () => {
     return (
         <div className='caseback-center'>
             <Swiper
-            freeMode={true}
-            slidesPerView={"auto"}
-            spaceBetween={10}
-            style={{ direction: "ltr" }}
+                freeMode={true}
+                slidesPerView={"auto"}
+                spaceBetween={10}
+                style={{ direction: "ltr" }}
             >
                 {coupons
-                .map((coupon, index) => {
-                    return (
-                    <SwiperSlide
-                        key={index}
-                        style={{ width: "auto" }}
-                    >
-                        <Coupon
-                            title={t(coupon.title)}
-                            subTitle={coupon.couponCode}
-                            discountValue={coupon.discountValue}
-                            discountType={coupon.discountType}
-                            // key={coupon.id}x
-                        />
-                    </SwiperSlide>
-                    );
-                })}
+                    .map((coupon, index) => {
+                        return (
+                            <SwiperSlide
+                                key={index}
+                                style={{ width: "auto" }}
+                            >
+                                <Coupon
+                                    title={t(coupon.title)}
+                                    subTitle={coupon.couponCode}
+                                    discountValue={coupon.discountValue}
+                                    discountType={coupon.discountType}
+                                // key={coupon.id}x
+                                />
+                            </SwiperSlide>
+                        );
+                    })}
             </Swiper>
         </div>
 
