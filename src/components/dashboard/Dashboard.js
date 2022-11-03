@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import Tabs from "@mui/material/Tabs";
@@ -58,6 +58,7 @@ if (screenWidth > 991) {
 export default function Dashboard() {
   const [products, setProducts] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
+  const [slidesPerView, setSlidesPerView] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(makeProductsPerPage);
@@ -131,6 +132,14 @@ export default function Dashboard() {
       setFilterProducts(productByCategoryById);
     }
   };
+
+  const ref = useRef(null);
+  useEffect(() => {
+    console.log('width', ref.current ? ref.current.offsetWidth : 0);
+    ref.current.offsetWidth < 500 ? setSlidesPerView(1) : console.log(1);
+    console.log(slidesPerView);
+  }, [ref.current]);
+  console.log(slidesPerView);
 
   const otherCategoriesArr = [
     {
@@ -230,8 +239,11 @@ export default function Dashboard() {
       <div className="dashboard-tamplate">
         <Header />
 
-        <div className="container">
-          <CouponsList />
+        <div 
+          className="container"
+          ref={ref}
+        >
+          <CouponsList slidesPerView={slidesPerView} />
 
           <div className="block-slider">
             <div className="module-heading">
@@ -254,6 +266,7 @@ export default function Dashboard() {
                     divClassName="featuredProduct-box"
                     // divClassName="featuredCategory-box"
                     h5ClassName="featuredProduct-box__title"
+                    slidesPerView={slidesPerView}
                   />
                 </div>
               </div>

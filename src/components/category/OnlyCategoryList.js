@@ -7,8 +7,8 @@ import "swiper/swiper.min.css";
 
 import noImage from "../../assets/images/noimage.png";
 
-function OnlyCategoryList({ divClassName, h5ClassName, categories, slider }) {
-  // console.log(categories);
+function OnlyCategoryList({ divClassName, h5ClassName, categories, slider, slidesPerView }) {
+  console.log(slidesPerView);
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ function OnlyCategoryList({ divClassName, h5ClassName, categories, slider }) {
           <Swiper
             freeMode={true}
             // slidesPerView={"auto"}
-            slidesPerView={2}
+            slidesPerView={slidesPerView}
             style={{ width: "auto" }}
             autoplay={{
               // delay: 1500,
@@ -34,11 +34,11 @@ function OnlyCategoryList({ divClassName, h5ClassName, categories, slider }) {
             breakpoints={{
               // when window width is >= 600px
               600: {
-                slidesPerView: 3,
+                  slidesPerView: 3,
               },
               // when window width is >= 900px
               900: {
-                slidesPerView: 4,
+                  slidesPerView: 4,
               },
             }}
             spaceBetween={10}
@@ -60,7 +60,6 @@ function OnlyCategoryList({ divClassName, h5ClassName, categories, slider }) {
                         state: { id: category.id },
                       });
                     }}
-                    // data-swiper-autoplay={delay}
                   >
                     <div
                       className={divClassName}

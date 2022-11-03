@@ -7,12 +7,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { getCoupons } from '../../redux/actions-exporter'
 import Coupon from './_components/_coupon'
 
-const CouponsList = () => {
+const CouponsList = ({slidesPerView}) => {
     const dispatch = useDispatch()
     const coupons = useSelector(state => state.coupon.coupons)
     const couponsPending = useSelector(state => state.coupon.isCouponsPending)
     const { t } = useTranslation();
-
+    console.log(slidesPerView);
     useEffect(() => {
         dispatch(getCoupons())
     }, [dispatch])
@@ -23,7 +23,7 @@ const CouponsList = () => {
         <div className='caseback-center'>
             <Swiper
                 freeMode={true}
-                slidesPerView={1}
+                slidesPerView={slidesPerView}
                 style={{ width: "auto" }}
                 breakpoints={{
                     // when window width is >= 600px
