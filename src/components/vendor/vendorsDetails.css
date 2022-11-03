@@ -239,10 +239,6 @@
   font-size: 15px;
 }
 
-.vendorAllListBlock .categoryList {
-  flex-wrap: wrap;
-}
-
 @media only screen and (max-width: 991px) {
   .vendorbanner-brand {
     margin-bottom: 25px;
@@ -252,11 +248,20 @@
 
 @media only screen and (max-width: 500px) {
   .vendorAllListBlock .categoryList {
-    padding: 0 8%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+   .vendorAllListBlock .category-box {
+    margin: 5px 0;
+  }
+
+    .vendorAllListBlock .categoryList__block:nth-child(odd) .category-box {
+    margin-right: 12px;
   }
 }
 
-@media only screen and (max-width: 410px) {
+/* @media only screen and (max-width: 410px) {
   .vendorAllListBlock .categoryList {
     padding: 0 6%;
   }
@@ -272,4 +277,4 @@
   .vendorAllListBlock .categoryList {
     padding: 0;
   }
-}
+} */
