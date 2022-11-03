@@ -11,6 +11,8 @@ import StoreIcon from "@mui/icons-material/Store";
 import ShopIcon from "@mui/icons-material/Shop";
 import CorporateFareIcon from "@mui/icons-material/CorporateFare";
 import GoogleMapReact from "google-map-react";
+import { useNavigate } from "react-router-dom";
+
 //icon
 import { ReactComponent as Grid } from "../../assets/icons/grid.svg";
 import { ReactComponent as List } from "../../assets/icons/list.svg";
@@ -22,6 +24,7 @@ import jns from "../../assets/images/jns.jpg";
 import shop from "../../assets/images/shop.jpg";
 import mall1 from "../../assets/images/mall1.jpg";
 import brownhorse2 from "../../assets/images/brownhorse2.jpg";
+import Clear from "@material-ui/icons/Clear";
 
 //css
 import "./map.css";
@@ -150,6 +153,7 @@ function Map() {
 
   const [filterMap, setFilterMap] = useState([]);
   const [category, setCategory] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setCategory(mapAllData);
@@ -240,7 +244,7 @@ function Map() {
               </ToggleButton> */}
             </ToggleButtonGroup>
 
-            <ToggleButtonGroup
+            {/* <ToggleButtonGroup
               aria-label="text alignment"
               className="mapFilterGroup"
             >
@@ -255,6 +259,18 @@ function Map() {
               <ToggleButton value="right" aria-label="right aligned">
                 <LocationMap />
                 Map
+              </ToggleButton>
+            </ToggleButtonGroup> */}
+            <ToggleButtonGroup
+              className="mapFilterGroup"
+            >
+              <ToggleButton
+
+                onClick={() => navigate('/')}
+              // className="closeBtn"
+              >
+                {" "}
+                <Clear />
               </ToggleButton>
             </ToggleButtonGroup>
           </div>
