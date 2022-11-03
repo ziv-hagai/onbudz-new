@@ -99,8 +99,11 @@ export default function AllVendor() {
 
       <div className="pageTemplate">
         <div className="container">
-          <ScrollingCarousel>
-            {/* <Tabs
+          <div className="PageBgHeading">
+            <h5 className="PageBgHeading-title">{t("Vendors")}</h5>
+          </div>
+          {/* <ScrollingCarousel>
+             <Tabs
               value={selectedTab.id}
               // onChange={handleChangeTab}
               className="categoriesSliderTabs"
@@ -113,8 +116,8 @@ export default function AllVendor() {
                   {category.title}
                 </Tab>
               ))}
-            </Tabs> */}
-          </ScrollingCarousel>
+            </Tabs> 
+          </ScrollingCarousel>*/}
           {selectedTab.id === "all" && (
             <div className="vendorAllListBlock">
               <h6 className="module-heading__title">{t("popularVendors")}</h6>

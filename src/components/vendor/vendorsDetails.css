@@ -239,6 +239,10 @@
   font-size: 15px;
 }
 
+.PageBgHeading {
+  background-image: url("../../assets/images/art.png");
+}
+
 @media only screen and (max-width: 991px) {
   .vendorbanner-brand {
     margin-bottom: 25px;
@@ -252,11 +256,11 @@
     justify-content: center;
   }
 
-   .vendorAllListBlock .category-box {
+  .vendorAllListBlock .category-box {
     margin: 5px 0;
   }
 
-    .vendorAllListBlock .categoryList__block:nth-child(odd) .category-box {
+  .vendorAllListBlock .categoryList__block:nth-child(odd) .category-box {
     margin-right: 12px;
   }
 }
