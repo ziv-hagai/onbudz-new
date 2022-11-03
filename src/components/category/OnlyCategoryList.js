@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper";
 import "swiper/swiper.min.css";
 
 import noImage from "../../assets/images/noimage.png";
@@ -20,6 +21,16 @@ function OnlyCategoryList({ divClassName, h5ClassName, categories, slider }) {
             // slidesPerView={"auto"}
             slidesPerView={2}
             style={{ width: "auto" }}
+            autoplay={{
+              // delay: 1500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+              stopOnLastSlide: true,
+            }}
+            // pagination={{
+            //   clickable: true,
+            // }}
+            modules={[ Autoplay, Pagination ]}
             breakpoints={{
               // when window width is >= 600px
               600: {
@@ -36,6 +47,10 @@ function OnlyCategoryList({ divClassName, h5ClassName, categories, slider }) {
             {categories
               .filter((category) => !category.parent)
               .map((category, index) => {
+                let delay = 0
+                if (index === 0) {
+                  delay=3000
+                }
                 return (
                   <SwiperSlide
                     key={index}
@@ -45,6 +60,7 @@ function OnlyCategoryList({ divClassName, h5ClassName, categories, slider }) {
                         state: { id: category.id },
                       });
                     }}
+                    // data-swiper-autoplay={delay}
                   >
                     <div
                       className={divClassName}
