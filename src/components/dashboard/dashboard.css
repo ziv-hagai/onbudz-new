@@ -523,3 +523,10 @@ div[data-arrow="right"] {
 .css-1hxrwmy-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
   background-color: var(--primary) !important;
 }
+
+/*------------------------------ navigate  --------------*/
+.swiper-button-next:after, .swiper-button-prev:after {
+  color: white;
+  margin-bottom: 25px;
+  font-weight: bold;
+}

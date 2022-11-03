@@ -2,15 +2,26 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper";
+import { Autoplay, Pagination, Navigation } from "swiper";
 import "swiper/swiper.min.css";
+import 'swiper/css/navigation';
 
 import noImage from "../../assets/images/noimage.png";
 
-function OnlyCategoryList({ divClassName, h5ClassName, categories, slider, slidesPerView }) {
-  console.log(slidesPerView);
+function OnlyCategoryList({ divClassName, h5ClassName, categories, slider, categoriesSlidesPerView }) {
+  // console.log(slidesPerView);
   const { t } = useTranslation();
   const navigate = useNavigate();
+
+  // const swiper = new Swiper('.swiper', {
+  
+  //   // Navigation arrows
+  //   navigation: {
+  //     nextEl: '.swiper-button-next',
+  //     prevEl: '.swiper-button-prev',
+  //   },
+  
+  // });
 
   return (
     <>
@@ -19,7 +30,8 @@ function OnlyCategoryList({ divClassName, h5ClassName, categories, slider, slide
           <Swiper
             freeMode={true}
             // slidesPerView={"auto"}
-            slidesPerView={slidesPerView}
+            Navigation
+            slidesPerView={categoriesSlidesPerView}
             style={{ width: "auto" }}
             autoplay={{
               // delay: 1500,
@@ -30,7 +42,7 @@ function OnlyCategoryList({ divClassName, h5ClassName, categories, slider, slide
             // pagination={{
             //   clickable: true,
             // }}
-            modules={[ Autoplay, Pagination ]}
+            modules={[ Autoplay, Pagination, Navigation ]}
             breakpoints={{
               // when window width is >= 600px
               600: {
@@ -74,6 +86,8 @@ function OnlyCategoryList({ divClassName, h5ClassName, categories, slider, slide
                   </SwiperSlide>
                 );
               })}
+              {/* <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div> */}
           </Swiper>
         ) : (
           <>

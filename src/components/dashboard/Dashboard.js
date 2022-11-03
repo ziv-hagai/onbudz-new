@@ -58,7 +58,8 @@ if (screenWidth > 991) {
 export default function Dashboard() {
   const [products, setProducts] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
-  const [slidesPerView, setSlidesPerView] = useState([]);
+  const [couponsSlidesPerView, setCouponsSlidesPerView] = useState([3]);
+  const [categoriesSlidesPerView, setCategoriesSlidesPerView] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(makeProductsPerPage);
@@ -136,10 +137,11 @@ export default function Dashboard() {
   const ref = useRef(null);
   useEffect(() => {
     console.log('width', ref.current ? ref.current.offsetWidth : 0);
-    ref.current.offsetWidth < 500 ? setSlidesPerView(1) : console.log(1);
-    console.log(slidesPerView);
+    ref.current.offsetWidth < 500 ? setCouponsSlidesPerView(1) : console.log(1);
+    ref.current.offsetWidth < 500 ? setCategoriesSlidesPerView(1) : console.log(1);
+    // console.log(slidesPerView);
   }, [ref.current]);
-  console.log(slidesPerView);
+  // console.log(slidesPerView);
 
   const otherCategoriesArr = [
     {
@@ -243,7 +245,7 @@ export default function Dashboard() {
           className="container"
           ref={ref}
         >
-          <CouponsList slidesPerView={slidesPerView} />
+          <CouponsList couponsSlidesPerView={couponsSlidesPerView} />
 
           <div className="block-slider">
             <div className="module-heading">
@@ -266,7 +268,7 @@ export default function Dashboard() {
                     divClassName="featuredProduct-box"
                     // divClassName="featuredCategory-box"
                     h5ClassName="featuredProduct-box__title"
-                    slidesPerView={slidesPerView}
+                    categoriesSlidesPerView={categoriesSlidesPerView}
                   />
                 </div>
               </div>
