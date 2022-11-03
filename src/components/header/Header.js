@@ -584,14 +584,18 @@ const Header = () => {
                 </Button>
                 {user && (
                   <>
-                    <Button className="dropBtn">
+                    {/* <Button className="dropBtn"> */}
+                    <div className="mainheader__btn mainheader__btn--cart">
                       <PersonOutline onClick={() => navigate("/userprofile")} />
-                    </Button>
+                      {/* </Button> */}
+                    </div>
                     <div className="notificationBlock">
-                      <Button className="dropBtn" onClick={handlenotification}>
+                      {/* <Button className="dropBtn" onClick={handlenotification}> */}
+                      <div className="mainheader__btn mainheader__btn--cart">
                         <NotificationsNoneIcon />
-                        <span className="subCount">3</span>
-                      </Button>
+                        <span className="subCountRight">3</span>
+                      </div>
+                      {/* </Button> */}
                       {notification ? (
                         <div className="notificationList">
                           <div className="chatMainBox">
