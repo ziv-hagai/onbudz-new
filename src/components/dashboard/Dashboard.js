@@ -41,6 +41,7 @@ import { MdFastfood } from "react-icons/md";
 import { GiSteeltoeBoots } from "react-icons/gi";
 import { MdToys } from "react-icons/md";
 import { BsWatch } from "react-icons/bs";
+import BasicPagination from "./BasicPagination";
 
 const screenWidth = window.innerWidth;
 let makeProductsPerPage = 0;
@@ -67,7 +68,10 @@ export default function Dashboard() {
     indexOfLastProduct
   );
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (e) => {
+    setCurrentPage(e.target.textContent);
+    console.log(e.target.textContent);
+  }
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -412,11 +416,18 @@ export default function Dashboard() {
                 : t("No products")}
             </ul>
             {/* <ChatBot /> */}
-            <Pagination
+            {/* <Pagination
               productsPerPage={productsPerPage}
               totalProducts={filterProducts.length}
               paginate={paginate}
-            />
+            /> */}
+            <div className="paginationDiv">
+              <BasicPagination 
+                productsPerPage={productsPerPage}
+                totalProducts={filterProducts.length}
+                paginate={paginate}
+              />
+            </div>
           </div>
         </div>
       </div>

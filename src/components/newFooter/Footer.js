@@ -30,10 +30,6 @@ const containerArr = [
     link: "/cart",
   },
   {
-    img: <LocalMallIcon />,
-    link: "/malls",
-  },
-  {
     img: <LocalOfferIcon />,
     link: "/sales",
   },

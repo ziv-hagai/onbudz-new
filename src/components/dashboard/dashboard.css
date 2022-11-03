@@ -1,5 +1,5 @@
 .dashboard-tamplate {
-  padding-bottom: 20px;
+  padding-bottom: 100px;
   overflow-x: hidden;
 }
 
@@ -508,4 +508,13 @@ div[data-arrow="right"] {
 
 .otherCategory svg {
   font-size: 35px;
+}
+
+.paginationDiv {
+  display: flex;
+  justify-content: center;
+}
+
+.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  background-color: var(--primary) !important;
 }
