@@ -743,8 +743,8 @@ const Header = () => {
                 <div className="responsiveSubMenu">
                   <Tabs
                     value={value}
-                    indicatorColor="primary"
-                    textColor="primary"
+                    indicatorColor={"green !important"}
+                    textColor="inherit"
                     onChange={handleChange}
                     aria-label="disabled tabs example"
                     className="MainMenu"
