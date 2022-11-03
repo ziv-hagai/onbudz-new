@@ -49,9 +49,7 @@ import { getUser } from "./redux/API/user/user.action";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import Sales from "./components/sales/Sales";
-import Malls from "./components/malls/Malls";
-import MallDetials from "./components/malls/MallDetials";
-import MallEvent from "./components/malls/MallEvent";
+
 
 function App(props) {
   const dispatch = useDispatch();
@@ -78,9 +76,6 @@ function App(props) {
           <Route path="/product/:id" element={<ProductDetails {...props} />} />
           <Route path="/vendor/:id" element={<VendorsDetails {...props} />} />
           <Route path="/sales" element={<Sales />} />
-          <Route path="/malls" element={<Malls />} />
-          <Route path="/malldetials" element={<MallDetials />} />
-          <Route path="/mallevent" element={<MallEvent />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/wallet" element={<Wallets />} />
           <Route path="/payment" element={<Payment />} />
