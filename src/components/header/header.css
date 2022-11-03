@@ -293,7 +293,7 @@
 }
 
 .filterBlockRow span {
-  width: 32px;
+  width: 64px;
   height: 32px;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -752,4 +752,9 @@
 
 .userBlock-img>img {
   width: 100%;
+}
+
+
+.MuiSlider-root {
+  color: var(--secondary) !important;
 }

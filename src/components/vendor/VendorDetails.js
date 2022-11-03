@@ -285,7 +285,7 @@ export default function VendorsDetails() {
               ))
               : t("No products")}
           </ul>
-          <TabsUnstyled
+          {/*  <TabsUnstyled
             defaultValue={
               location?.state?.vendors?.value
                 ? location?.state?.vendors?.value
@@ -293,7 +293,7 @@ export default function VendorsDetails() {
             }
             className="centerTabs"
           >
-            <TabsList>
+             <TabsList>
               <Tabv>{t("topRated")}</Tabv>
               <Tabv>{t("allCollections")}</Tabv>
             </TabsList>
@@ -319,9 +319,9 @@ export default function VendorsDetails() {
                             <div className="product-box__likeBtn">
                               <FavoriteBorderOutlinedIcon />
                             </div>
-                            {/*<div className="product-box__discount">*/}
-                            {/*  <span className="product-box__off">45%</span>*/}
-                            {/*</div>*/}
+                            <div className="product-box__discount"> 
+                             <span className="product-box__off">45%</span>
+                            </div>
                           </div>
                           <div className="product-box__info">
                             <div className="product-box__infoTop">
@@ -332,9 +332,9 @@ export default function VendorsDetails() {
                                 {product?.price || 0}₪
                               </span>
                             </div>
-                            {/*<h5 className="product-box__name">*/}
-                            {/*  3 {t("boxSimple")}*/}
-                            {/*</h5>*/}
+                            <h5 className="product-box__name">
+                             3 {t("boxSimple")}
+                            </h5>
                           </div>
                         </div>
                       </li>
@@ -367,9 +367,9 @@ export default function VendorsDetails() {
                             <div className="product-box__likeBtn">
                               <FavoriteBorderOutlinedIcon />
                             </div>
-                            {/*<div className="product-box__discount">*/}
-                            {/*  <span className="product-box__off">45%</span>*/}
-                            {/*</div>*/}
+                            <div className="product-box__discount">
+                             <span className="product-box__off">45%</span>
+                            </div>
                           </div>
                           <div className="product-box__info">
                             <div className="product-box__infoTop">
@@ -380,9 +380,9 @@ export default function VendorsDetails() {
                                 {product?.price || 0}₪
                               </span>
                             </div>
-                            {/*<h5 className="product-box__name">*/}
-                            {/*  3 {t("boxSimple")}*/}
-                            {/*</h5>*/}
+                            <h5 className="product-box__name">
+                             3 {t("boxSimple")}
+                            </h5>
                           </div>
                         </div>
                       </li>
@@ -390,7 +390,7 @@ export default function VendorsDetails() {
                   : t("No products")}
               </ul>
             </TabPanel>
-          </TabsUnstyled>
+          </TabsUnstyled> */}
         </div>
       </div>
     </>
