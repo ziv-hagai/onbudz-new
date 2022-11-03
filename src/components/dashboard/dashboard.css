@@ -510,3 +510,8 @@ div[data-arrow="right"] {
 .otherCategory svg {
   font-size: 35px;
 }
+
+.paginationDiv {
+  display: flex;
+  align-items: center;
+}
