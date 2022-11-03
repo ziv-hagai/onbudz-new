@@ -26,9 +26,11 @@ import brownhorse2 from "../../assets/images/brownhorse2.jpg";
 //css
 import "./map.css";
 //component
+// import { googleMapsApiKey } from "../../config.json";
 import Header from "../header/Header";
 import Dashboard from "../dashboard/Dashboard";
 import Marker from "./Marker";
+
 
 // import { InfoWindow } from "@react-google-maps/api";
 
@@ -138,15 +140,12 @@ const defaultCenter = {
 };
 
 function Map() {
-  // eslint-disable-next-line
   const [center, setCenter] = useState(defaultCenter);
   const OpenSidebar = () => setClick(!click);
-  const [click, setClick] = useState(false);
+  const [click, setClick] = useState(true);
   const [showingInfoWindow, setShowingInfoWindow] = useState(false);
   const [selectedMap, setSelectedMap] = useState({});
-  // eslint-disable-next-line
   const [activeMarker, setActiveMarker] = useState();
-  // eslint-disable-next-line
   const [open, setOpen] = useState(false);
 
   const [filterMap, setFilterMap] = useState([]);
@@ -231,14 +230,14 @@ function Map() {
                   <ShopIcon />
                 </Tooltip>
               </ToggleButton>
-              <ToggleButton
+              {/* <ToggleButton
                 aria-label="justified"
                 onClick={() => handleChange("mall")}
               >
                 <Tooltip title="Mall">
                   <StoreIcon />
                 </Tooltip>
-              </ToggleButton>
+              </ToggleButton> */}
             </ToggleButtonGroup>
 
             <ToggleButtonGroup
@@ -262,12 +261,13 @@ function Map() {
           <div className="mainMap">
             <GoogleMapReact
               bootstrapURLKeys={{
-                key: process?.env?.REACT_APP_GOOGLE_MAP_API_KEY,
+                // key: googleMapsApiKey,
               }}
               defaultCenter={center}
               defaultZoom={12}
               options={getMapOptions}
             >
+              {/* {console.log("filterMap", filterMap)} */}
               {filterMap.length > 0 &&
                 filterMap.map((item) => {
                   return (

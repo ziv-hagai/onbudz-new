@@ -24,7 +24,7 @@ const Marker = ({ image, openInfoWindow, show, data, selectedMap }) => {
         onClick={openInfoWindow}
         className="pin bounce"
         style={{
-          backgroundColor: "red",
+          backgroundColor: "green",
           cursor: "pointer",
           width: 30,
           height: 30,
@@ -49,7 +49,8 @@ const Marker = ({ image, openInfoWindow, show, data, selectedMap }) => {
             borderStyle: "solid",
             borderColor: "#fff",
           }}
-        ></span>
+        >
+        </span>
       </div>
 
       <div className="pulse" />
@@ -64,7 +65,7 @@ const Marker = ({ image, openInfoWindow, show, data, selectedMap }) => {
               <Chip label="Project Tag" />
               <Input id="icon-button-file" type="button" />
               <IconButton
-                color="primary"
+                color="green"
                 aria-label="upload picture"
                 component="span"
                 className="likeBtn"
