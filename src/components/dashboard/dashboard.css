@@ -238,7 +238,7 @@ div[data-arrow="right"] {
 }
 
 .product-box__off {
-  background: #27739f;
+  background: var(--darkGreen);
   padding: 8px 15px;
   color: #fff;
   display: inline-block;
