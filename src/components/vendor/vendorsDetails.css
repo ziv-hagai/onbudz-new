@@ -200,10 +200,11 @@
 }
 
 .vendorbanner-brandImg img {
-  object-fit: contain;
-  height: 100px;
-  width: 100px;
-  padding: 12%;
+  object-fit: cover;
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
+  width: 100%;
 }
 
 .vendorbanner-brandTitle {
