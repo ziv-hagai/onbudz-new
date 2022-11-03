@@ -12,8 +12,9 @@ export default function BasicPagination({ productsPerPage, totalProducts, pagina
   return (
     <Stack spacing={2}>
       <Pagination 
-        count={pageNumbers.length} 
         onClick={paginate}
+        count={pageNumbers.length} 
+        color="primary"
       />
     </Stack>
   );

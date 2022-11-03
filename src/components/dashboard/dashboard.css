@@ -514,3 +514,7 @@ div[data-arrow="right"] {
   display: flex;
   justify-content: center;
 }
+
+.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  background-color: var(--primary) !important;
+}
