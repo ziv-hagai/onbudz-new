@@ -13,7 +13,7 @@
 
 .product-box__timer__text {
   background: #fff;
-  color: #27739f;
+  color: var(--darkGreen);
   padding: 8px 15px;
   display: inline-block;
   border-radius: 100px;

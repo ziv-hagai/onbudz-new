@@ -238,7 +238,7 @@ div[data-arrow="right"] {
 }
 
 .product-box__off {
-  background: #27739f;
+  background: var(--darkGreen);
   padding: 8px 15px;
   color: #fff;
   display: inline-block;
@@ -515,6 +515,11 @@ div[data-arrow="right"] {
   justify-content: center;
 }
 
+/*------------------------------ pagination color --------------*/
 .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  background-color: var(--primary) !important;
+}
+
+.css-1hxrwmy-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
   background-color: var(--primary) !important;
 }
