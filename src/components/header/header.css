@@ -148,7 +148,7 @@
   max-width: inherit;
   font-size: 14px !important;
   text-transform: capitalize !important;
-  color: #000 !important;
+  color: var(--darkGreen) !important;
   margin-right: 8px !important;
   font-weight: 600 !important;
 }

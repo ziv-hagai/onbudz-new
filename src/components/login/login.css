@@ -154,3 +154,12 @@
   padding: 5px;
   border-radius: 50px;
 }
+
+.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: green !important;
+}
+
+.Mui-focused {
+  color: green !important;
+
+}
