@@ -33,6 +33,7 @@ const Marker = ({ image, openInfoWindow, show, data, selectedMap }) => {
         }}
         title="test"
       >
+
         <span
           style={{
             backgroundImage: `url(${image})`,
@@ -50,6 +51,7 @@ const Marker = ({ image, openInfoWindow, show, data, selectedMap }) => {
             borderColor: "#fff",
           }}
         >
+
         </span>
       </div>
 
@@ -60,9 +62,17 @@ const Marker = ({ image, openInfoWindow, show, data, selectedMap }) => {
             width: 195,
           }}
         >
-          <div className="product-preview col product-preview--map">
+          <div className="product-preview col product-preview--map"
+
+
+          >
             <div className="product-preview-status">
-              <Chip label="Project Tag" />
+              <Chip label="visit"
+                onClick={() => {
+                  navigate(`/vendor/${data.id}`, {
+                    state: { id: data.id },
+                  });
+                }} />
               <Input id="icon-button-file" type="button" />
               <IconButton
                 color="primary"
@@ -78,14 +88,14 @@ const Marker = ({ image, openInfoWindow, show, data, selectedMap }) => {
 
             <div className="productDetails">
               <div className="productDetailsHead flex">
-                <div className="price">{data?.price || 0}$</div>
+                {/* <div className="price">{data?.price || 0}$</div> */}
               </div>
-              <div className="productTitle">{data.name}</div>
+              <div className="productTitle">{data.title}</div>
               <div className="location">
                 <Location />
-                <span>{data.location}</span>
+                <span>{data.city}</span>
               </div>
-              <div className="footer flex">
+              {/* <div className="footer flex">
                 <div className="distance">{data.distance}</div>
 
                 <div
@@ -107,7 +117,7 @@ const Marker = ({ image, openInfoWindow, show, data, selectedMap }) => {
                   {data.type}
                 </div>
               </div>
-              <div className="type">Cupon:{data.cupon}</div>
+              <div className="type">Cupon:{data.cupon}</div> */}
             </div>
           </div>
         </div>

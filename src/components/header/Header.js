@@ -62,7 +62,7 @@ const Header = () => {
   const [searchText, setSearchText] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
   const [filterStores, setFilterStores] = useState([]);
-  products && console.log(products);
+  // products && console.log(products);
   const categories = useSelector(
     (state) => state.productCategories.productCategories
   );

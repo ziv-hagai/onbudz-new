@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 //dependencies
 import ToggleButton from "@mui/material/ToggleButton";
@@ -150,15 +151,46 @@ function Map() {
   const [selectedMap, setSelectedMap] = useState({});
   const [activeMarker, setActiveMarker] = useState();
   const [open, setOpen] = useState(false);
-
   const [filterMap, setFilterMap] = useState([]);
   const [category, setCategory] = useState([]);
   const navigate = useNavigate();
 
+  // get products
+  const [products, setProducts] = useState([]);
+  const [stores, setStores] = useState([]);
+
+  const categories = useSelector(
+    (state) => state.productCategories.productCategories
+  );
+  const merchants = useSelector((state) => state.merchant.merchants);
+  //  search
   useEffect(() => {
-    setCategory(mapAllData);
-    setFilterMap(mapAllData);
-  }, []);
+    if (categories.length) {
+      const prepareProduct = categories.reduce(
+        (previous, current) => [
+          ...previous,
+          ...current.products.map((product) => ({
+            ...product,
+            categoryId: current.id,
+            categoryName: current.title,
+          })),
+        ],
+        []
+      );
+      setProducts(prepareProduct);
+      setStores(merchants);
+    }
+  }, [categories]);
+  //end
+
+  useEffect(() => {
+    const all =
+      // setCategory(mapAllData);
+      // setFilterMap(mapAllData);
+      setCategory(stores);
+    setFilterMap(stores);
+  }, [stores]);
+  filterMap.length && console.log(filterMap);
 
   const handleClickOpen = (p) => {
     if (showingInfoWindow) setShowingInfoWindow(false);
@@ -230,7 +262,7 @@ function Map() {
                 aria-label="centered"
                 onClick={() => handleChange("shop")}
               >
-                <Tooltip title="Shop">
+                <Tooltip title="Store">
                   <ShopIcon />
                 </Tooltip>
               </ToggleButton>
@@ -288,10 +320,9 @@ function Map() {
                 filterMap.map((item) => {
                   return (
                     <Marker
-                      // onClick={handleOpen}
                       openInfoWindow={() => handleClickOpen(item)}
-                      lng={item.position.lng}
-                      lat={item.position.lat}
+                      lat={item.longitude}
+                      lng={item.latitude}
                       image={item.image}
                       data={item}
                       selectedMap={selectedMap}
