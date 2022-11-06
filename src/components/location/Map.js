@@ -329,7 +329,7 @@ function Map() {
                   return (
                     <Marker
                       openInfoWindow={() => handleClickOpen(item)}
-                      lat={categoitem.longitude}
+                      lat={item.longitude}
                       lng={item.latitude}
                       image={item.image}
                       data={item}
