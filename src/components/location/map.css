@@ -103,10 +103,12 @@
   display: flex;
   flex-wrap: wrap;
   position: relative;
+  width: 100%;
 }
 
 .sidebarModule {
   width: 400px;
+  max-width: 100%;
   height: calc(100vh - 65px);
   overflow-y: scroll;
   overflow-x: hidden;
@@ -128,7 +130,7 @@
 
 .rightModule {
   width: calc(100% - 400px);
-  min-width: 400px !important;
+  /* min-width: 400px !important; */
   position: relative;
   height: calc(100vh - 65px);
   overflow-y: scroll;
@@ -342,13 +344,13 @@
 
 @media screen and (max-width: 991px) {
   .sidebarModule {
-    /* width: 100%; */
+    width: 100%;
     height: calc(100vh - 135px);
   }
 
   .rightModule {
     width: 100%;
-    min-width: 400px !important;
+    /* min-width: 400px !important; */
 
     position: absolute;
     left: 100%;
@@ -423,7 +425,7 @@
 
 @media screen and (max-width: 768px) {
   .mapFilter {
-    display: none;
+    /* display: none; */
   }
 }
 
