@@ -137,7 +137,7 @@ export default function Dashboard() {
 
   const ref = useRef(null);
   useEffect(() => {
-    console.log('width', ref.current ? ref.current.offsetWidth : 0);
+    // console.log('width', ref.current ? ref.current.offsetWidth : 0);
     ref.current.offsetWidth < 500 ? setCouponsSlidesPerView(1) : console.log(1);
     ref.current.offsetWidth < 500 ? setCategoriesSlidesPerView(2) : console.log(1);
     ref.current.offsetWidth < 500 ? setVendorsSlidesPerView(3) : console.log(1);

@@ -65,7 +65,7 @@ const Marker = ({ image, openInfoWindow, show, data, selectedMap }) => {
               <Chip label="Project Tag" />
               <Input id="icon-button-file" type="button" />
               <IconButton
-                color="green"
+                color="primary"
                 aria-label="upload picture"
                 component="span"
                 className="likeBtn"
