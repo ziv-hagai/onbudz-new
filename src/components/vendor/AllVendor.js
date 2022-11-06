@@ -4,7 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { Tab, Tabs } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper";
+import 'swiper/css/navigation';
+import "swiper/swiper.min.css";
 import Header from "../header/Header";
 import { getMerchants } from "../../redux/API/merchant/merchant.action";
 import { CircularProgress } from "@mui/material";
@@ -100,7 +103,7 @@ export default function AllVendor() {
       <div className="pageTemplate">
         <div className="container">
           <div className="PageBgHeading">
-            <h5 className="PageBgHeading-title">{t("Vendors")}</h5>
+            <h5 className="PageBgHeading-title">{t("Stores")}</h5>
           </div>
           {/* <ScrollingCarousel>
              <Tabs

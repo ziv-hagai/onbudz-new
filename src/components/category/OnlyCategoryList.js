@@ -14,13 +14,13 @@ function OnlyCategoryList({ divClassName, h5ClassName, categories, slider, categ
   const navigate = useNavigate();
 
   // const swiper = new Swiper('.swiper', {
-  
+
   //   // Navigation arrows
   //   navigation: {
   //     nextEl: '.swiper-button-next',
   //     prevEl: '.swiper-button-prev',
   //   },
-  
+
   // });
 
   return (
@@ -30,38 +30,37 @@ function OnlyCategoryList({ divClassName, h5ClassName, categories, slider, categ
           <Swiper
             freeMode={true}
             // slidesPerView={"auto"}
-            Navigation
+            navigation
             slidesPerView={categoriesSlidesPerView}
-            style={{ width: "auto" }}
+            style={{
+              width: "auto", "--swiper-navigation-size": "25px"
+            }}
             autoplay={{
-              // delay: 1500,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
               stopOnLastSlide: true,
             }}
-            // pagination={{
-            //   clickable: true,
-            // }}
-            modules={[ Autoplay, Pagination, Navigation ]}
-            breakpoints={{
-              // when window width is >= 600px
-              600: {
-                  slidesPerView: 3,
-              },
-              // when window width is >= 900px
-              900: {
-                  slidesPerView: 4,
-              },
-            }}
             spaceBetween={10}
-          // style={{ direction: "ltr" }}
+            modules={[Autoplay, Pagination, Navigation]}
+
+          // pagination={{
+          //   clickable: true,
+          // }}
+          // breakpoints={{
+          //   600: {
+          //     slidesPerView: 3,
+          //   },
+          //   900: {
+          //     slidesPerView: 4,
+          //   },
+          // }}
           >
             {categories
               .filter((category) => !category.parent)
               .map((category, index) => {
                 let delay = 0
                 if (index === 0) {
-                  delay=3000
+                  delay = 3000
                 }
                 return (
                   <SwiperSlide
@@ -86,7 +85,7 @@ function OnlyCategoryList({ divClassName, h5ClassName, categories, slider, categ
                   </SwiperSlide>
                 );
               })}
-              {/* <div class="swiper-button-prev"></div>
+            {/* <div class="swiper-button-prev"></div>
               <div class="swiper-button-next"></div> */}
           </Swiper>
         ) : (

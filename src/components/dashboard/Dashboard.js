@@ -59,7 +59,8 @@ export default function Dashboard() {
   const [products, setProducts] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
   const [couponsSlidesPerView, setCouponsSlidesPerView] = useState([3]);
-  const [categoriesSlidesPerView, setCategoriesSlidesPerView] = useState([]);
+  const [categoriesSlidesPerView, setCategoriesSlidesPerView] = useState([4]);
+  const [vendorsSlidesPerView, setVendorsSlidesPerView] = useState([6]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(makeProductsPerPage);
@@ -138,7 +139,8 @@ export default function Dashboard() {
   useEffect(() => {
     console.log('width', ref.current ? ref.current.offsetWidth : 0);
     ref.current.offsetWidth < 500 ? setCouponsSlidesPerView(1) : console.log(1);
-    ref.current.offsetWidth < 500 ? setCategoriesSlidesPerView(1) : console.log(1);
+    ref.current.offsetWidth < 500 ? setCategoriesSlidesPerView(2) : console.log(1);
+    ref.current.offsetWidth < 500 ? setVendorsSlidesPerView(3) : console.log(1);
     // console.log(slidesPerView);
   }, [ref.current]);
   // console.log(slidesPerView);
@@ -241,7 +243,7 @@ export default function Dashboard() {
       <div className="dashboard-tamplate">
         <Header />
 
-        <div 
+        <div
           className="container"
           ref={ref}
         >
@@ -307,7 +309,7 @@ export default function Dashboard() {
               </div> */}
             </div>
 
-            <VendorList isAllVendors={false} storesText={"stores"} />
+            <VendorList isAllVendors={false} storesText={"stores"} vendorsSlidesPerView={vendorsSlidesPerView} />
 
             {/* <ScrollingCarousel>
               <ul className="categoryList">
@@ -437,7 +439,7 @@ export default function Dashboard() {
               paginate={paginate}
             /> */}
             <div className="paginationDiv">
-              <BasicPagination 
+              <BasicPagination
                 productsPerPage={productsPerPage}
                 totalProducts={filterProducts.length}
                 paginate={paginate}

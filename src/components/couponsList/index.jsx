@@ -2,12 +2,14 @@ import { CircularProgress } from '@mui/material'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from "react-i18next";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css/navigation';
 
 import { getCoupons } from '../../redux/actions-exporter'
 import Coupon from './_components/_coupon'
 
-const CouponsList = ({couponsSlidesPerView}) => {
+const CouponsList = ({ couponsSlidesPerView }) => {
     const dispatch = useDispatch()
     const coupons = useSelector(state => state.coupon.coupons)
     const couponsPending = useSelector(state => state.coupon.isCouponsPending)
@@ -18,13 +20,17 @@ const CouponsList = ({couponsSlidesPerView}) => {
     }, [dispatch])
 
     if (couponsPending) return <CircularProgress style={{ display: 'block', margin: '20px auto' }} />
-
     return (
         <div className='caseback-center'>
             <Swiper
+
+                modules={[Navigation]}
                 freeMode={true}
                 slidesPerView={couponsSlidesPerView}
-                style={{ width: "auto" }}
+                style={{
+                    width: "auto", "--swiper-navigation-size": "25px"
+                }}
+                navigation
                 // breakpoints={{
                 //     // when window width is >= 600px
                 //     600: {

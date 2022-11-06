@@ -5,6 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper";
+import 'swiper/css/navigation';
+import "swiper/swiper.min.css";
 
 import { getMerchants } from "../../redux/actions-exporter";
 
@@ -88,35 +92,59 @@ export default function VendorList(props) {
           ))}
       </Tabs> */}
 
-      <ScrollingCarousel>
-        <ul className="categoryList">
-          {merchants.length > 0
-            ? merchants.map((item) => (
-              <>
-                <li
-                  onClick={() => {
-                    navigate(`/vendor/${item.id}`, {
-                      state: { id: item.id },
-                    });
-                  }}
-                  className="categoryList__block isLink"
-                >
-                  <div className="category-box text-center">
-                    <div className="category-box__img">
-                      <img
-                        src={item.image}
-                        className="img-fluid"
-                        alt="My Awesome"
-                      />
-                    </div>
-                    <h6 className="category-box__title">{item.title}</h6>
+      {/* <ScrollingCarousel> */}
+      <Swiper
+        freeMode={true}
+        navigation
+        slidesPerView={props.vendorsSlidesPerView}
+        style={{
+          width: "auto", "--swiper-navigation-size": "25px"
+        }}
+        // autoplay={{
+        //   disableOnInteraction: false,
+        //   pauseOnMouseEnter: true,
+        //   stopOnLastSlide: true,
+        // }}
+        spaceBetween={10}
+        modules={[Autoplay, Pagination, Navigation]}
+      // className="categoryList"
+      >
+        {/* <ul className="categoryList"> */}
+        {merchants.length > 0
+          ? merchants.map((item, index) => {
+            return (
+              <SwiperSlide
+                key={index}
+                style={{ width: "auto" }}
+                onClick={() => {
+                  navigate(`/vendor/${item.id}`, {
+                    state: { id: item.id },
+                  });
+                }}
+              // className="categoryList__block isLink"
+              >
+                {/* <li */}
+
+                <div className="category-box text-center swiperVendors">
+                  <div className="category-box__img">
+                    <img
+                      src={item.image}
+                      className="img-fluid"
+                      alt="My Awesome"
+                    />
                   </div>
-                </li>
-              </>
-            ))
-            : t("No merchants")}
-        </ul>
-      </ScrollingCarousel>
+                  <h6 className="category-box__title">{item.title}</h6>
+                </div>
+                {/* </li> */}
+              </SwiperSlide>
+            );
+          })
+          : t("No merchants")}
+        {/* </ul> */}
+
+        {/* </ScrollingCarousel> */}
+      </Swiper>
+
     </>
   );
 }
