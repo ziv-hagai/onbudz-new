@@ -152,7 +152,7 @@ function Map() {
   const [activeMarker, setActiveMarker] = useState();
   const [open, setOpen] = useState(false);
   const [filterMap, setFilterMap] = useState([]);
-  const [category, setCategory] = useState([]);
+  const [category, setCategory] = useState("stores");
   const navigate = useNavigate();
 
   // get products
@@ -187,8 +187,8 @@ function Map() {
     const all =
       // setCategory(mapAllData);
       // setFilterMap(mapAllData);
-      setCategory(stores);
-    setFilterMap(stores);
+      // setCategory("stores");
+      setFilterMap(stores);
   }, [stores]);
   filterMap.length && console.log(filterMap);
 
@@ -201,17 +201,25 @@ function Map() {
   };
 
   const handleChange = (newValue) => {
-    if (newValue === "mall") {
-      let artFilter = category.filter((item) => item.type === newValue);
-      setFilterMap(artFilter);
-    } else if (newValue === "shop") {
-      let artFilter = category.filter((item) => item.type === newValue);
-      setFilterMap(artFilter);
-    } else if (newValue === "product") {
-      let artFilter = category.filter((item) => item.type === newValue);
-      setFilterMap(artFilter);
+    // if (newValue === "mall") {
+    //   let artFilter = category.filter((item) => item.type === newValue);
+    //   setFilterMap(artFilter);
+    // } else if (newValue === "shop") {
+    //   let artFilter = category.filter((item) => item.type === newValue);
+    //   setFilterMap(artFilter);
+    // } else if (newValue === "product") {
+    //   let artFilter = category.filter((item) => item.type === newValue);
+    //   setFilterMap(artFilter);
+    // } else {
+    //   setFilterMap(category);
+    // }
+    if (newValue === "stores") {
+      setFilterMap(stores);
+
+    } else if (newValue === "products") {
+      setFilterMap(products);
     } else {
-      setFilterMap(category);
+      // setFilterMap(stores.concat(products));
     }
   };
 
@@ -251,18 +259,18 @@ function Map() {
 
               <ToggleButton
                 aria-label="left aligned"
-                onClick={() => handleChange("product")}
+                onClick={() => handleChange("products")}
               >
-                <Tooltip title="Product">
+                <Tooltip title="Products">
                   <CorporateFareIcon />
                 </Tooltip>
               </ToggleButton>
 
               <ToggleButton
                 aria-label="centered"
-                onClick={() => handleChange("shop")}
+                onClick={() => handleChange("stores")}
               >
-                <Tooltip title="Store">
+                <Tooltip title="Stores">
                   <ShopIcon />
                 </Tooltip>
               </ToggleButton>
@@ -315,13 +323,13 @@ function Map() {
               defaultZoom={12}
               options={getMapOptions}
             >
-              {/* {console.log("filterMap", filterMap)} */}
+              {console.log("filterMap", filterMap)}
               {filterMap.length > 0 &&
                 filterMap.map((item) => {
                   return (
                     <Marker
                       openInfoWindow={() => handleClickOpen(item)}
-                      lat={item.longitude}
+                      lat={categoitem.longitude}
                       lng={item.latitude}
                       image={item.image}
                       data={item}

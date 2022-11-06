@@ -24,12 +24,12 @@ const Marker = ({ image, openInfoWindow, show, data, selectedMap }) => {
         onClick={openInfoWindow}
         className="pin bounce"
         style={{
-          backgroundColor: "green",
+          backgroundColor: "var(--primary)",
           cursor: "pointer",
-          width: 30,
-          height: 30,
+          width: 50,
+          height: 50,
           position: "absolute",
-          padding: 2,
+          padding: 5,
         }}
         title="test"
       >
@@ -40,14 +40,14 @@ const Marker = ({ image, openInfoWindow, show, data, selectedMap }) => {
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
-            height: 26,
-            width: 26,
+            height: 40,
+            width: 40,
             display: "block",
             borderRadius: 50,
             overflow: "hidden",
             transform: "rotate(45deg)",
             borderWidth: 1,
-            borderStyle: "solid",
+            // borderStyle: "solid",
             borderColor: "#fff",
           }}
         >
